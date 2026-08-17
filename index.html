@@ -37,7 +37,7 @@ body {
   box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 
-/* Header */
+/* Header & User Bar */
 .header {
   position: sticky;
   top: 0;
@@ -46,7 +46,7 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 14px 20px;
+  padding: 12px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,185 +55,174 @@ body {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .logo-badge {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-  border-radius: 14px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
   font-weight: 900;
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
-  box-shadow: 0 0 20px rgba(255, 42, 133, 0.4);
 }
 
-.brand-text h1 {
-  font-size: 16px;
+.brand-text h1 { font-size: 15px; font-weight: 800; }
+.brand-text p { font-size: 10px; color: var(--text-sub); }
+
+.user-account-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border-glow);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wallet-badge {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid var(--accent-green);
+  color: var(--accent-green);
+  padding: 4px 8px;
+  border-radius: 8px;
   font-weight: 800;
 }
 
-.brand-text p {
-  font-size: 11px;
-  color: var(--text-sub);
-}
-
-.back-btn {
-  display: none;
-  background: var(--surface-2);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* Dynamic View System */
-.view {
-  display: none;
-  animation: fadeIn 0.25s ease-in-out;
-}
-
-.view.active {
-  display: block;
-}
+/* Views & Dynamic Cards */
+.view { display: none; animation: fadeIn 0.25s ease-in-out; }
+.view.active { display: block; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Header Video Intro Container */
-.hero-video-container {
-  margin: 16px 16px 8px;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--border-glow);
-  background: var(--surface-1);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-  position: relative;
-  aspect-ratio: 16 / 9;
-}
-
-.hero-video-container iframe,
-.hero-video-container video {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-  object-fit: cover;
-}
-
-/* Trial & Speed Banners */
-.trial-card {
-  margin: 8px 16px 8px;
-  padding: 16px 20px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(255, 42, 133, 0.15));
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.trial-text h2 { font-size: 15px; font-weight: 800; color: #fbbf24; }
-.trial-text p { font-size: 11px; color: #cbd5e1; margin-top: 2px; }
-
-.trial-btn {
-  background: var(--accent-amber);
-  color: #000;
-  padding: 8px 14px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 900;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.speed-test-banner {
-  margin: 0 16px 16px;
-  padding: 12px 18px;
-  border-radius: 16px;
-  background: var(--surface-1);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.speed-text { font-size: 12px; font-weight: 700; color: var(--accent-cyan); display: flex; align-items: center; gap: 6px; }
-
-.speed-btn {
-  background: rgba(6, 182, 212, 0.15);
-  border: 1px solid rgba(6, 182, 212, 0.4);
-  color: #22d3ee;
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-/* Grid & List Styles */
-.grid-title {
-  padding: 0 20px 12px;
-  font-size: 15px;
-  font-weight: 800;
-}
-
 .products-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  padding: 0 16px;
+  padding: 16px;
 }
 
 .app-card {
   background: var(--surface-1);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  border-radius: 18px;
+  padding: 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.app-card:hover {
-  border-color: var(--border-glow);
-  transform: translateY(-2px);
 }
 
 .icon-box {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   background: var(--surface-2);
-  border-radius: 14px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
-  font-size: 24px;
-  margin-bottom: 12px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
-.app-title { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
-.app-desc { font-size: 11px; color: var(--text-sub); line-height: 1.4; margin-bottom: 12px; }
+.app-title { font-size: 13px; font-weight: 800; margin-bottom: 4px; }
+.app-desc { font-size: 10px; color: var(--text-sub); margin-bottom: 10px; }
+.action-label { font-size: 11px; font-weight: 700; color: var(--accent-cyan); }
 
-.action-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--accent-cyan);
-  display: flex;
+/* Modals */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  padding: 20px;
 }
 
-/* Bottom Nav */
+.modal.active { display: flex; }
+
+.modal-content {
+  background: var(--surface-1);
+  border: 1px solid var(--border-glow);
+  width: 100%;
+  max-width: 360px;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+}
+
+.modal-title { font-size: 16px; font-weight: 800; margin-bottom: 12px; }
+
+.input-field {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 12px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 12px;
+  outline: none;
+  direction: ltr;
+  text-align: right;
+}
+
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: none;
+  border: none;
+  color: var(--text-sub);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Card Purchase Items */
+.card-item {
+  background: var(--surface-1);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px;
+  margin: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buy-code-btn {
+  background: var(--accent-green);
+  color: #000;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* Bottom Bar */
 .bottom-bar {
   position: fixed;
   bottom: 0;
@@ -243,7 +232,6 @@ body {
   max-width: 480px;
   background: rgba(15, 19, 31, 0.92);
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: space-around;
@@ -252,20 +240,13 @@ body {
 }
 
 .tab-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: var(--text-sub);
-  text-decoration: none;
-  font-size: 10px;
-  font-weight: 700;
   background: none;
   border: none;
+  color: var(--text-sub);
+  font-size: 10px;
+  font-weight: 700;
   cursor: pointer;
 }
-
-.tab-btn.active { color: var(--accent-purple); }
 </style>
 </head>
 <body>
@@ -275,171 +256,183 @@ body {
   <div class="brand">
     <div class="logo-badge">ف</div>
     <div class="brand-text">
-      <h1 id="header-title">فاطمة ستور</h1>
-      <p id="header-subtitle">اختر القسم للتنقل</p>
+      <h1>فاطمة ستور</h1>
+      <p>خدمات الدفع والاشتراكات</p>
     </div>
   </div>
-  <button class="back-btn" id="backBtn" onclick="goBack()">← العودة</button>
+  <button class="user-account-btn" onclick="toggleAccountModal()">
+    <span id="user-status-text">دخول</span>
+    <span class="wallet-badge" id="header-balance">0 د.ع</span>
+  </button>
 </header>
 
-<!-- LEVEL 1: HOME VIEW -->
+<!-- HOME VIEW -->
 <div id="home-view" class="view active">
-
-  <!-- قسم الفيديو بالمقدمة من Google Drive -->
-  <section class="hero-video-container">
-    <iframe src="https://drive.google.com/file/d/1zsrkcxXzzbBqRot0RD2HxNzDgw3qDBtq/preview" allow="autoplay"></iframe>
-  </section>
-
-  <section class="trial-card">
-    <div class="trial-text">
-      <h2>🎁 تجربة الاشتراكات</h2>
-      <p>أجور التجربة 1,000 د.ع فقط</p>
+  <div style="padding: 16px 16px 0; font-size: 14px; font-weight: 800;">أقسام البطاقات</div>
+  <main class="products-grid">
+    <div class="app-card" onclick="openPage('asia-cards-view')">
+      <div class="icon-box">📱</div>
+      <h3 class="app-title">كروت آسيا سيل</h3>
+      <p class="app-desc">شراء مباشر مع تسليم الكود تلقائياً</p>
+      <div class="action-label">شراء كود ←</div>
     </div>
-    <a class="trial-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب%20تجربة%20اشتراك%20(1000%20د.ع)">طلب تجربة</a>
-  </section>
+  </main>
+</div>
 
-  <div class="speed-test-banner">
-    <div class="speed-text">⚡ فحص سرعة الإنترنت</div>
-    <a href="https://fast.com" target="_blank" class="speed-btn">افحص الآن ↗</a>
+<!-- ASIA CARDS VIEW -->
+<div id="asia-cards-view" class="view">
+  <div style="padding: 16px; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-weight:800;">كروت آسيا المتاحة</span>
+    <button onclick="goHome()" style="background:none; border:none; color:var(--accent-cyan); cursor:pointer;">الرئيسية</button>
   </div>
 
-  <div class="grid-title">الأقسام الرئيسية</div>
-
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('net-list-view', 'اشتراكات الإنترنت', 'اختر الشركة للتجديد')">
-      <div>
-        <div class="icon-box">🌐</div>
-        <h3 class="app-title">الإنترنت</h3>
-        <p class="app-desc">الوطني، سوبر سيل، الجزيرة، اسياسيل...</p>
-      </div>
-      <div class="action-label">عرض الشبكات ←</div>
+  <div class="card-item">
+    <div>
+      <div style="font-weight:800; font-size:14px;">كارت آسيا 5,000 د.ع</div>
+      <div style="font-size:11px; color:var(--accent-green); font-weight:700;">السعر: 5,000 د.ع</div>
     </div>
+    <button class="buy-code-btn" onclick="buyCard(5000, 'كارت آسيا 5,000')">شراء مباشر</button>
+  </div>
 
-    <div class="app-card" onclick="openPage('iptv-list-view', 'اشتراكات IPTV', 'اختر السيرفر أو التطبيق')">
-      <div>
-        <div class="icon-box">📺</div>
-        <h3 class="app-title">اشتراكات IPTV</h3>
-        <p class="app-desc">MAX, BEST 4K, TIGER, TOD...</p>
-      </div>
-      <div class="action-label">عرض القائمة ←</div>
+  <div class="card-item">
+    <div>
+      <div style="font-weight:800; font-size:14px;">كارت آسيا 10,000 د.ع</div>
+      <div style="font-size:11px; color:var(--accent-green); font-weight:700;">السعر: 10,000 د.ع</div>
     </div>
-
-    <div class="app-card" onclick="openPage('games-list-view', 'شحن الألعاب', 'اختر اللعبة للشحن')">
-      <div>
-        <div class="icon-box">🎮</div>
-        <h3 class="app-title">شحن الألعاب</h3>
-        <p class="app-desc">PUBG, Yalla Ludo, Free Fire, Roblox...</p>
-      </div>
-      <div class="action-label">عرض الألعاب ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('transfers-list-view', 'التحويلات المالية', 'اختر وسيلة التحويل')">
-      <div>
-        <div class="icon-box">💸</div>
-        <h3 class="app-title">التحويلات المالية</h3>
-        <p class="app-desc">زين كاش، ماستر الرافدين، آسيا بي، فاست بي...</p>
-      </div>
-      <div class="action-label">عرض الطرق ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('cards-list-view', 'البطاقات الإلكترونية', 'اختر نوع البطاقات')">
-      <div>
-        <div class="icon-box">💳</div>
-        <h3 class="app-title">البطاقات</h3>
-        <p class="app-desc">Google Play, Apple, Steam, PlayStation...</p>
-      </div>
-      <div class="action-label">عرض البطاقات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('social-list-view', 'خدمات السوشيال ميديا', 'اختر المنصة المطلوب تمويلها')">
-      <div>
-        <div class="icon-box">📣</div>
-        <h3 class="app-title">السوشيال ميديا</h3>
-        <p class="app-desc">فيس بوك، انستكرام، تيك توك، وغيرها...</p>
-      </div>
-      <div class="action-label">عرض المنصات ←</div>
-    </div>
-  </main>
+    <button class="buy-code-btn" onclick="buyCard(10000, 'كارت آسيا 10,000')">شراء مباشر</button>
+  </div>
 </div>
 
-<!-- SUB VIEW: TRANSFERS -->
-<div id="transfers-list-view" class="view">
-  <div class="grid-title">وسائل التحويل المالي</div>
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('zaincash-details-view', 'زين كاش Zain Cash', 'تحويل وإيداع أموال')">
-      <div><div class="icon-box">📱</div><h3 class="app-title">زين كاش</h3><p class="app-desc">تحويل، إيداع وسحب مباشر.</p></div>
-      <div class="action-label">طلب تحويل ←</div>
+<!-- LOGIN / ACCOUNT MODAL -->
+<div class="modal" id="accountModal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="toggleAccountModal()">✕</button>
+    
+    <!-- STATE 1: LOGGED OUT -->
+    <div id="logged-out-state">
+      <div class="modal-title">تسجيل الدخول برقم الهاتف</div>
+      <p style="font-size:11px; color:var(--text-sub); margin-bottom:12px;">أدخل رقم الهاتف لتأكيد حسابك وشحن المحفظة</p>
+      <input type="tel" id="phoneInput" class="input-field" placeholder="077XXXXXXXX">
+      <button class="btn-primary" onclick="simulateLogin()">إرسال رمز التأكيد</button>
     </div>
-    <div class="app-card" onclick="openPage('rafidain-details-view', 'ماستر الرافدين', 'تحويل وإيداع ماستر كارد')">
-      <div><div class="icon-box">💳</div><h3 class="app-title">ماستر الرافدين</h3><p class="app-desc">شحن وتعبئة بطاقات الرافدين.</p></div>
-      <div class="action-label">طلب تحويل ←</div>
+
+    <!-- STATE 2: LOGGED IN -->
+    <div id="logged-in-state" style="display:none;">
+      <div class="modal-title">حسابي والمحفظة</div>
+      <p style="font-size:12px; margin-bottom:6px;">الرقم: <b id="user-phone-display">07700000000</b></p>
+      <p style="font-size:12px; margin-bottom:12px;">الرصيد الحالي: <b id="modal-balance-display" style="color:var(--accent-green)">0 د.ع</b></p>
+      
+      <div style="background:var(--surface-2); padding:10px; border-radius:12px; margin-bottom:12px;">
+        <span style="font-size:11px; display:block; margin-bottom:6px;">شحن محاكاة (للتجربة):</span>
+        <button onclick="addMockBalance(5000)" style="background:var(--accent-purple); color:#fff; border:none; padding:6px 10px; border-radius:8px; font-size:11px; cursor:pointer;">+5,000 د.ع</button>
+        <button onclick="addMockBalance(10000)" style="background:var(--accent-pink); color:#fff; border:none; padding:6px 10px; border-radius:8px; font-size:11px; cursor:pointer;">+10,000 د.ع</button>
+      </div>
+
+      <button class="btn-primary" style="background:#ef4444;" onclick="simulateLogout()">تسجيل الخروج</button>
     </div>
-    <div class="app-card" onclick="openPage('asiapay-details-view', 'آسيا بي AsiaPay', 'تحويل وإيداع أموال')">
-      <div><div class="icon-box">📲</div><h3 class="app-title">آسيا بي</h3><p class="app-desc">خدمات محفظة آسيا بي المالية.</p></div>
-      <div class="action-label">طلب تحويل ←</div>
-    </div>
-    <div class="app-card" onclick="openPage('fastpay-details-view', 'فاست بي FastPay', 'تحويل وإيداع أموال')">
-      <div><div class="icon-box">⚡</div><h3 class="app-title">فاست بي</h3><p class="app-desc">تحويلات سريعة فورية عبر المحفظة.</p></div>
-      <div class="action-label">طلب تحويل ←</div>
-    </div>
-    <div class="app-card" onclick="openPage('asiatransfer-details-view', 'تحويل رصيد آسيا', 'تحويل رصيد اسياسيل مباشر')">
-      <div><div class="icon-box">🔄</div><h3 class="app-title">تحويل رصيد آسيا</h3><p class="app-desc">تحويل رصيد اسياسيل مباشر بين الخطوط.</p></div>
-      <div class="action-label">طلب تحويل ←</div>
-    </div>
-  </main>
+  </div>
 </div>
 
-<!-- Bottom Navigation Bar -->
+<!-- BOTTOM BAR -->
 <nav class="bottom-bar">
-  <button class="tab-btn active" onclick="goHome()">
-    <span style="font-size:18px;">🏠</span>
-    <span>الرئيسية</span>
-  </button>
-  <a href="https://wa.me/9647760361911" target="_blank" class="tab-btn">
-    <span style="font-size:18px;">🟢</span>
-    <span>طلب مباشر</span>
-  </a>
+  <button class="tab-btn" onclick="goHome()">🏠 الرئيسية</button>
+  <button class="tab-btn" onclick="toggleAccountModal()">👛 المحفظة</button>
 </nav>
 
 <script>
-let historyStack = ['home-view'];
-let headerTitles = { 'home-view': { title: 'فاطمة ستور', sub: 'اختر القسم للتنقل' } };
+// Mock Database State
+let userState = {
+  isLoggedIn: false,
+  phone: '',
+  balance: 0
+};
 
-function openPage(pageId, title, sub) {
-  document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
-  historyStack.push(pageId);
-  headerTitles[pageId] = { title: title, sub: sub };
-  document.getElementById('header-title').textContent = title;
-  document.getElementById('header-subtitle').textContent = sub;
-  document.getElementById('backBtn').style.display = 'block';
-  window.scrollTo(0, 0);
+// Toggle Modal
+function toggleAccountModal() {
+  const modal = document.getElementById('accountModal');
+  modal.classList.toggle('active');
 }
 
-function goBack() {
-  if (historyStack.length > 1) {
-    historyStack.pop();
-    let previousPageId = historyStack[historyStack.length - 1];
-    document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-    document.getElementById(previousPageId).classList.add('active');
-    let meta = headerTitles[previousPageId];
-    document.getElementById('header-title').textContent = meta.title;
-    document.getElementById('header-subtitle').textContent = meta.sub;
-    if (historyStack.length === 1) document.getElementById('backBtn').style.display = 'none';
-    window.scrollTo(0, 0);
+// Render UI based on Auth State
+function updateUI() {
+  document.getElementById('header-balance').textContent = userState.balance.toLocaleString('ar-IQ') + ' د.ع';
+  
+  if (userState.isLoggedIn) {
+    document.getElementById('user-status-text').textContent = 'حسابي';
+    document.getElementById('logged-out-state').style.display = 'none';
+    document.getElementById('logged-in-state').style.display = 'block';
+    document.getElementById('user-phone-display').textContent = userState.phone;
+    document.getElementById('modal-balance-display').textContent = userState.balance.toLocaleString('ar-IQ') + ' د.ع';
+  } else {
+    document.getElementById('user-status-text').textContent = 'دخول';
+    document.getElementById('logged-out-state').style.display = 'block';
+    document.getElementById('logged-in-state').style.display = 'none';
   }
 }
 
-function goHome() {
-  historyStack = ['home-view'];
-  document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-  document.getElementById('home-view').classList.add('active');
-  document.getElementById('header-title').textContent = 'فاطمة ستور';
-  document.getElementById('header-subtitle').textContent = 'اختر القسم للتنقل';
-  document.getElementById('backBtn').style.display = 'none';
-  window.scrollTo(0, 0);
+// Simulate Login Procedure
+function simulateLogin() {
+  const phone = document.getElementById('phoneInput').value.trim();
+  if (phone.length < 10) {
+    alert('يرجى إدخال رقم هاتف عراقي صحيح');
+    return;
+  }
+  userState.isLoggedIn = true;
+  userState.phone = phone;
+  updateUI();
+  alert('تم تسجيل الدخول بنجاح!');
 }
-</script>
 
+// Simulate Logout
+function simulateLogout() {
+  userState.isLoggedIn = false;
+  userState.phone = '';
+  userState.balance = 0;
+  updateUI();
+  toggleAccountModal();
+}
+
+// Add Balance for Testing
+function addMockBalance(amount) {
+  userState.balance += amount;
+  updateUI();
+  alert(`تم إضافة ${amount.toLocaleString('ar-IQ')} د.ع إلى محفظتك بنجاح`);
+}
+
+// Buy Card Logic
+function buyCard(price, cardName) {
+  if (!userState.isLoggedIn) {
+    alert('يرجى تسجيل الدخول برقم الهاتف أولاً للشراء');
+    toggleAccountModal();
+    return;
+  }
+
+  if (userState.balance < price) {
+    alert('رصيدك غير كافٍ للشراء. يرجى شحن المحفظة أولاً');
+    toggleAccountModal();
+    return;
+  }
+
+  // Deduct balance and output generated code
+  userState.balance -= price;
+  updateUI();
+  
+  const mockCode = Math.floor(100000000000 + Math.random() * 900000000000);
+  alert(`✅ تم الشراء بنجاح!\nالمنتج: ${cardName}\nكود الكارت: ${mockCode}\nتم خصم ${price.toLocaleString('ar-IQ')} د.ع من محفظتك.`);
+}
+
+// Views Navigation
+function openPage(pageId) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+}
+
+function goHome() {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('home-view').classList.add('active');
+}
+
+updateUI();
+</script>
 </body>
 </html>
