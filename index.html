@@ -14,10 +14,18 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:
- radial-gradient(circle at 85% 0%,#7f42d522,transparent 28%),
- radial-gradient(circle at 0% 65%,#e43a9212,transparent 30%),
- var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}
+/* تعديل حجم الخط الأساسي للبدن ليصبح بحجم متوسط مريح للعين */
+body{
+  background:
+   radial-gradient(circle at 85% 0%,#7f42d522,transparent 28%),
+   radial-gradient(circle at 0% 65%,#e43a9212,transparent 30%),
+   var(--bg);
+  color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;
+  font-size: 15px; /* حجم خط متوسط موحد */
+  line-height: 1.6;
+  overflow-x:hidden;
+}
 a{text-decoration:none;color:inherit}
 button{font:inherit;cursor:pointer}
 .container{width:min(1180px,92%);margin:auto}
@@ -25,92 +33,125 @@ button{font:inherit;cursor:pointer}
 /* header */
 .header{position:sticky;top:0;z-index:1000;background:#08060dcc;backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:900}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:16px}
 .logo{width:47px;height:47px;border-radius:16px;display:grid;place-items:center;
  background:linear-gradient(135deg,#9b5cff,#ee3f9d);box-shadow:0 10px 35px #9b5cff45;font-size:25px}
-.brand small{display:block;color:#938da0;font-size:10px;margin-top:3px}
-.links{display:flex;gap:22px;color:#bdb7c8;font-size:13px}
+.brand small{display:block;color:#938da0;font-size:12px;margin-top:3px}
+.links{display:flex;gap:22px;color:#bdb7c8;font-size:15px}
 .links a:hover{color:#fff}
-.navbtn{padding:11px 17px;border:1px solid #ffffff1c;border-radius:14px;background:#ffffff08}
+.navbtn{padding:11px 17px;border:1px solid #ffffff1c;border-radius:14px;background:#ffffff08;font-size:14px}
 .wa{background:#16bd62;border-color:#42e17d44;font-weight:900}
 
 /* hero */
 .hero{min-height:680px;position:relative;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:35px;padding:45px 0}
 .hero-copy{position:relative;z-index:2}
-.badge{display:inline-flex;padding:9px 15px;border:1px solid #b16aff55;border-radius:999px;background:#9b5cff12;color:#dfc9ff;font-size:12px;font-weight:900}
-h1{font-size:clamp(43px,6vw,78px);line-height:1.04;margin:22px 0}
+.badge{display:inline-flex;padding:9px 15px;border:1px solid #b16aff55;border-radius:999px;background:#9b5cff12;color:#dfc9ff;font-size:13px;font-weight:900}
+h1{font-size:clamp(40px,5.5vw,70px);line-height:1.1;margin:22px 0}
 .gradient{background:linear-gradient(90deg,#b77cff,#f044a2,#7ca6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{max-width:610px;color:#bbb5c6;line-height:2;font-size:16px}
+.hero p{max-width:610px;color:#bbb5c6;line-height:1.8;font-size:16px}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.btn{padding:14px 20px;border-radius:16px;border:1px solid var(--line);display:inline-flex;justify-content:center;align-items:center;gap:8px;font-weight:900;transition:.25s;color:#fff}
+.btn{padding:14px 20px;border-radius:16px;border:1px solid var(--line);display:inline-flex;justify-content:center;align-items:center;gap:8px;font-weight:900;transition:.25s;color:#fff;font-size:15px}
 .btn:hover{transform:translateY(-3px)}
 .primary{background:linear-gradient(100deg,#743cff,#e53a96);box-shadow:0 15px 40px #9b5cff28}
 .dark{background:#ffffff08}.green{background:#15bd62}
-.hero-note{display:flex;gap:18px;margin-top:24px;flex-wrap:wrap;color:#a7a1b1;font-size:12px}
+.hero-note{display:flex;gap:18px;margin-top:24px;flex-wrap:wrap;color:#a7a1b1;font-size:13px}
 .hero-note b{color:#fff}
 
 /* video */
 .video-card{position:relative;border:1px solid #ffffff20;border-radius:32px;padding:10px;background:linear-gradient(145deg,#ffffff12,#ffffff04);box-shadow:0 35px 90px #000b;overflow:hidden}
 .video-frame{aspect-ratio:16/10;border-radius:24px;overflow:hidden;background:#05040a;position:relative}
 .video-frame iframe{width:100%;height:100%;border:0}
-.video-label{position:absolute;top:18px;right:18px;padding:8px 12px;border-radius:12px;background:#09070dcc;border:1px solid #fff2;font-size:11px;font-weight:900;z-index:2}
-.video-bottom{display:flex;justify-content:space-between;align-items:center;padding:14px 7px 4px;color:#aaa4b5;font-size:12px}
+.video-label{position:absolute;top:18px;right:18px;padding:8px 12px;border-radius:12px;background:#09070dcc;border:1px solid #fff2;font-size:12px;font-weight:900;z-index:2}
+.video-bottom{display:flex;justify-content:space-between;align-items:center;padding:14px 7px 4px;color:#aaa4b5;font-size:13px}
 .live{color:#6dffa7}.dotlive{display:inline-block;width:7px;height:7px;background:#18d66e;border-radius:50%;margin-left:6px}
 
 /* quick */
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-5px}
 .quick-card{padding:18px;border:1px solid var(--line);border-radius:20px;background:#ffffff06}
-.quick-card b{display:block;margin-bottom:6px}.quick-card span{font-size:11px;color:var(--muted)}
+.quick-card b{display:block;margin-bottom:6px;font-size:16px}.quick-card span{font-size:13px;color:var(--muted)}
 
 /* sections */
 .section{padding:78px 0}
 .head{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}
-.eyebrow{color:#bd82ff;font-size:11px;font-weight:900;letter-spacing:.5px}
-.head h2{font-size:32px;margin-top:6px}.head p{color:var(--muted);font-size:13px;margin-top:7px}
+.eyebrow{color:#bd82ff;font-size:12px;font-weight:900;letter-spacing:.5px}
+.head h2{font-size:32px;margin-top:6px}.head p{color:var(--muted);font-size:14px;margin-top:7px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.card{background:linear-gradient(145deg,#ffffff0b,#ffffff04);border:1px solid var(--line);border-radius:24px;padding:20px;transition:.3s;position:relative;overflow:hidden}
+.card{background:linear-gradient(145deg,#ffffff0b,#ffffff04);border:1px solid var(--line);border-radius:24px;padding:16px;transition:.3s;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
 .card:hover{transform:translateY(-6px);border-color:#a85dff55;box-shadow:0 25px 60px #0007}
-.icon{width:52px;height:52px;border-radius:17px;display:grid;place-items:center;font-size:24px;
-background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
-.card h3{font-size:16px;margin-bottom:7px}.card p{color:#9892a4;font-size:12px;line-height:1.8}
+.card-img{width:100%;height:120px;border-radius:16px;object-fit:cover;margin-bottom:12px}
+.card h3{font-size:17px;margin-bottom:7px}.card p{color:#9892a4;font-size:13px;line-height:1.7;margin-bottom:15px}
 
-/* offers */
+/* offers & pubg */
 .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.offer{border:1px solid var(--line);border-radius:27px;padding:23px;background:linear-gradient(145deg,#171021,#0d0915)}
+.offer{border:1px solid var(--line);border-radius:27px;padding:20px;background:linear-gradient(145deg,#171021,#0d0915)}
 .offer.featured{border-color:#a85dff66;box-shadow:0 25px 70px #8b4cff17}
-.tag{display:inline-block;padding:6px 9px;border-radius:9px;background:#9b5cff18;color:#d6b9ff;font-size:10px;font-weight:900}
-.offer h3{font-size:22px;margin:15px 0 7px}.offer .desc{color:var(--muted);font-size:12px;line-height:1.8}
-.pricebox{margin:17px 0;background:#05040a99;border:1px solid #fff1;border-radius:16px;padding:8px 13px}
-.row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #ffffff0a;font-size:12px}
-.row:last-child{border:0}.row strong{color:#c992ff}
-.btn-sm{padding:5px 10px;border-radius:8px;font-size:10px;background:#ffffff15;border:1px solid var(--line);color:#fff}
-.btn-sm:hover{background:var(--purple)}
+.offer-img{width:100%;height:140px;border-radius:18px;object-fit:cover;margin-top:10px}
+.tag{display:inline-block;padding:6px 9px;border-radius:99px;background:#9b5cff18;color:#d6b9ff;font-size:11px;font-weight:900}
+.offer h3{font-size:22px;margin:12px 0 7px}.offer .desc{color:var(--muted);font-size:13px;line-height:1.7}
+.pricebox{margin:15px 0;background:#05040a99;border:1px solid #fff1;border-radius:16px;padding:8px 13px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #ffffff0a;font-size:14px}
+.row:last-child{border:0}.row strong{color:#c992ff;font-size:15px}
+
+/* أزرار السلة الصغيرة (المتميزة والبارزة جداً) */
+.btn-sm{
+  padding:8px 14px;
+  border-radius:12px;
+  font-size:13px;
+  background:linear-gradient(135deg, #ff9f43, #ff5252); /* لون جذاب بارز جداً */
+  border:none;
+  color:#fff;
+  font-weight:bold;
+  transition:.25s;
+  box-shadow:0 4px 15px rgba(255,107,107,0.4);
+}
+.btn-sm:hover{
+  transform:scale(1.06);
+  box-shadow:0 6px 20px rgba(255,107,107,0.6);
+}
+
+/* أزرار السلة لكروت الخدمات (كبيرة وبارزة ولون مميز لجذب النظر) */
+.btn-card{
+  width:100%;
+  padding:12px 14px;
+  border-radius:14px;
+  background:linear-gradient(135deg, #ff7e5f, #feb47b); /* لون جذاب ملفت للأنظار */
+  border:none;
+  color:#11091c;
+  font-weight:900;
+  font-size:15px; /* حجم خط كبير وبارز */
+  margin-top:auto;
+  box-shadow:0 6px 20px rgba(255, 126, 95, 0.4);
+  transition:all 0.3s ease;
+}
+.btn-card:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 8px 25px rgba(255, 126, 95, 0.6);
+  filter:brightness(1.1);
+}
 
 /* experience */
 .experience{border-radius:32px;padding:30px;background:
  radial-gradient(circle at 85% 20%,#e93e9c26,transparent 35%),
  linear-gradient(135deg,#191025,#0b0912);border:1px solid #ffffff18;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
-.exp-price{font-size:38px;font-weight:950;color:#ffc857}
+.exp-price{font-size:42px;font-weight:950;color:#ffc857}
 
 /* speed */
 .speed{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:28px;border-radius:28px;border:1px solid #ffffff18;background:#ffffff06}
-.speed h3{font-size:23px}.speed p{color:var(--muted);font-size:13px;line-height:1.8;margin-top:7px}
+.speed h3{font-size:24px}.speed p{color:var(--muted);font-size:14px;line-height:1.8;margin-top:7px}
 
 /* content */
 .media{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.media-card{min-height:230px;border-radius:23px;position:relative;overflow:hidden;border:1px solid var(--line);display:flex;align-items:end;padding:18px;background:linear-gradient(135deg,#4e288e,#100b18)}
-.media-card:nth-child(2){background:linear-gradient(135deg,#a62f65,#100b18)}
-.media-card:nth-child(3){background:linear-gradient(135deg,#1e62a1,#090e19)}
-.media-card:nth-child(4){background:linear-gradient(135deg,#a36a22,#171008)}
-.media-card .emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:80px;opacity:.24}
-.media-card div:last-child{position:relative;z-index:2}.media-card small{color:#d8c3ff}.media-card h3{margin-top:5px}
+.media-card{min-height:230px;border-radius:23px;position:relative;overflow:hidden;border:1px solid var(--line);display:flex;align-items:end;padding:18px;background:#100b18}
+.media-card img.bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4;transition:.3s}
+.media-card:hover img.bg-img{opacity:0.6;transform:scale(1.05)}
+.media-card div:last-child{position:relative;z-index:2}.media-card small{color:#d8c3ff;font-size:12px}.media-card h3{margin-top:5px;font-size:18px}
 
 /* contact */
 .contact{padding:35px;border-radius:30px;text-align:center;border:1px solid #ffffff18;background:linear-gradient(145deg,#151020,#0b0912)}
-.contact .big{font-size:45px}.contact h2{margin:10px 0}.contact p{color:var(--muted);line-height:1.9;font-size:13px;max-width:600px;margin:0 auto 20px}
+.contact .big{font-size:45px}.contact h2{margin:10px 0}.contact p{color:var(--muted);line-height:1.9;font-size:14px;max-width:600px;margin:0 auto 20px}
 
 /* footer */
-.footer{border-top:1px solid var(--line);padding:40px 0 105px;text-align:center;color:#8f899b;font-size:12px;line-height:2}
+.footer{border-top:1px solid var(--line);padding:40px 0 105px;text-align:center;color:#8f899b;font-size:13px;line-height:2}
 .footer strong{color:#d6c1ff}
 
 /* float elements */
@@ -120,14 +161,14 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
 
 /* CART SYSTEM STYLES */
 .cart-float-btn {
-  position: fixed; right: 17px; bottom: 155px; width: 58px; height: 58px;
-  border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--pink));
-  color: #fff; border: none; font-size: 22px; z-index: 1200;
-  box-shadow: 0 10px 30px #9b5cff55; display: flex; align-items: center; justify-content: center;
+  position: fixed; right: 17px; bottom: 155px; width: 62px; height: 62px;
+  border-radius: 50%; background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  color: #11091c; border: none; font-size: 26px; z-index: 1200;
+  box-shadow: 0 10px 30px rgba(255,126,95,0.5); display: flex; align-items: center; justify-content: center;
 }
 #cart-count {
   position: absolute; top: -3px; right: -3px; background: #ff3b30; color: #fff;
-  font-size: 11px; font-weight: bold; padding: 2px 6px; border-radius: 99px;
+  font-size: 12px; font-weight: bold; padding: 2px 7px; border-radius: 99px;
 }
 .cart-modal {
   position: fixed; bottom: -100%; left: 50%; transform: translateX(-50%);
@@ -137,17 +178,17 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
 }
 .cart-modal.active { bottom: 0; }
 .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
-.cart-close { background: none; border: none; color: #fff; font-size: 24px; }
+.cart-close { background: none; border: none; color: #fff; font-size: 26px; }
 .cart-body { max-height: 200px; overflow-y: auto; margin: 15px 0; }
-.cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 13px; background: #ffffff08; padding: 10px; border-radius: 12px; }
-.cart-item-remove { color: #ff5c5c; cursor: pointer; font-weight: bold; margin-left: 8px; }
+.cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 14px; background: #ffffff08; padding: 10px; border-radius: 12px; }
+.cart-item-remove { color: #ff5c5c; cursor: pointer; font-weight: bold; margin-left: 8px; font-size: 16px; }
 .cart-inputs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
-.cart-input { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: #ffffff0a; color: #fff; font-size: 12px; outline: none; }
+.cart-input { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: #ffffff0a; color: #fff; font-size: 13px; outline: none; }
 .cart-input:focus { border-color: var(--purple); background: #ffffff12; }
 .cart-input::placeholder { color: var(--muted); }
 .cart-footer { border-top: 1px solid var(--line); padding-top: 12px; }
-.cart-total { display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; margin-bottom: 12px; }
-.empty-msg { text-align: center; color: var(--muted); font-size: 13px; margin: 20px 0; }
+.cart-total { display: flex; justify-content: space-between; font-size: 17px; font-weight: bold; margin-bottom: 12px; }
+.empty-msg { text-align: center; color: var(--muted); font-size: 14px; margin: 20px 0; }
 
 /* responsive */
 @media(max-width:900px){
@@ -156,14 +197,14 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
  .experience{grid-template-columns:1fr;text-align:center}.speed{grid-template-columns:1fr;text-align:center}
 }
 @media(max-width:520px){
- .container{width:94%}.nav{height:68px}.brand{font-size:14px}.logo{width:42px;height:42px}
- .hero{min-height:auto;padding:30px 0 45px}.hero h1{font-size:43px}.hero p{font-size:13px}
+ .container{width:94%}.nav{height:68px}.brand{font-size:15px}.logo{width:42px;height:42px}
+ .hero{min-height:auto;padding:30px 0 45px}.hero h1{font-size:38px}.hero p{font-size:14px}
  .btn{width:100%}.quick{grid-template-columns:1fr 1fr}.quick-card{padding:14px}.head h2{font-size:24px}
- .grid4{grid-template-columns:1fr 1fr}.card{padding:15px;min-height:145px}.card h3{font-size:14px}
+ .grid4{grid-template-columns:1fr 1fr}.card{padding:12px;min-height:145px}.card h3{font-size:15px}
  .media{grid-template-columns:1fr 1fr}.media-card{min-height:190px}
  .video-card{border-radius:25px}.video-frame{border-radius:18px}
  .bottom{position:fixed;display:flex;bottom:10px;left:50%;transform:translateX(-50%);width:94%;height:64px;z-index:1100;border-radius:22px;background:#0e0b16eF;backdrop-filter:blur(20px);border:1px solid #fff2;justify-content:space-around;align-items:center}
- .bottom a{font-size:10px;text-align:center;color:#918b9c}.bottom span{display:block;font-size:20px;margin-bottom:3px}.bottom .active{color:#c58bff}
+ .bottom a{font-size:11px;text-align:center;color:#918b9c}.bottom span{display:block;font-size:20px;margin-bottom:3px}.bottom .active{color:#c58bff}
  .float-wa{bottom:86px}.music{bottom:86px}.cart-float-btn{bottom:148px;right:17px;}
 }
 </style>
@@ -205,7 +246,7 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
   <div class="video-card">
     <div class="video-frame">
       <div class="video-label">🎬 فيديو فاطمة ستور</div>
-      <iframe src="https://www.youtube.com/embed/j9zuCKcYzhk?autoplay=1&mute=1&loop=1&playlist=j9zuCKcYzhk&rel=0&modestbranding=1"
+      <iframe src="https://www.youtube.com/embed/ldbYI9FIx0o?autoplay=1&mute=1&loop=1&playlist=ldbYI9FIx0o&rel=0&modestbranding=1"
         title="Fatima Store" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="video-bottom"><span class="live"><i class="dotlive"></i>متاح الآن</span><span>جودة العرض تعتمد على سرعة الإنترنت</span></div>
@@ -222,21 +263,55 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
 <section class="container section" id="services">
   <div class="head"><div><div class="eyebrow">OUR SERVICES</div><h2>✨ خدماتنا</h2><p>اختيار مرتب لأهم الخدمات التي يحتاجها الزبون</p></div></div>
   <div class="grid4">
-    <div class="card"><div class="icon">📺</div><h3>IPTV والاشتراكات</h3><p>قنوات وأفلام ومسلسلات ورياضة ومشغلات للأجهزة المختلفة.</p></div>
-    <div class="card"><div class="icon">🎮</div><h3>شحن الألعاب</h3><p>PUBG وFree Fire وeFootball ويلا لودو وغيرها.</p></div>
-    <div class="card"><div class="icon">💳</div><h3>البطاقات الإلكترونية</h3><p>Apple وGoogle Play وبطاقات الألعاب والخدمات الرقمية.</p></div>
-    <div class="card"><div class="icon">📱</div><h3>المحافظ الإلكترونية</h3><p>Baly وZain Cash وFastPay وخدمات الدفع والشحن.</p></div>
-    <div class="card"><div class="icon">📈</div><h3>السوشيال ميديا</h3><p>خدمات رقمية للترويج والتفاعل والمشاهدات حسب المتوفر.</p></div>
-    <div class="card"><div class="icon">⚽</div><h3>الرياضة</h3><p>اشتراكات ومحتوى رياضي وباقات مشاهدة حسب المتوفر.</p></div>
-    <div class="card"><div class="icon">🎬</div><h3>الأفلام والمسلسلات</h3><p>ترفيه متجدد ومكتبات مشاهدة عبر الخدمات المتاحة.</p></div>
-    <div class="card"><div class="icon">🤖</div><h3>الخدمات الرقمية</h3><p>خدمات وتطبيقات وحلول رقمية متنوعة، اسألنا عن المتوفر.</p></div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=80" alt="IPTV" class="card-img">
+      <div><h3>IPTV والاشتراكات</h3><p>قنوات وأفلام ومسلسلات ورياضة ومشغلات للأجهزة المختلفة.</p></div>
+      <button class="btn-card" onclick="addToCart('IPTV والاشتراكات', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=400&q=80" alt="Gaming" class="card-img">
+      <div><h3>شحن الألعاب</h3><p>PUBG وFree Fire وeFootball ويلا لودو وغيرها.</p></div>
+      <button class="btn-card" onclick="addToCart('شحن الألعاب (عام)', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1556742049-0a67568d0d9f?auto=format&fit=crop&w=400&q=80" alt="Cards" class="card-img">
+      <div><h3>البطاقات الإلكترونية</h3><p>Apple وGoogle Play وبطاقات الألعاب والخدمات الرقمية.</p></div>
+      <button class="btn-card" onclick="addToCart('بطاقات إلكترونية', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=400&q=80" alt="Wallets" class="card-img">
+      <div><h3>المحافظ الإلكترونية</h3><p>Baly وZain Cash وFastPay وخدمات الدفع والشحن.</p></div>
+      <button class="btn-card" onclick="addToCart('شحن محفظة إلكترونية', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80" alt="Social Media" class="card-img">
+      <div><h3>السوشيال ميديا</h3><p>خدمات رقمية للترويج والتفاعل والمشاهدات حسب المتوفر.</p></div>
+      <button class="btn-card" onclick="addToCart('خدمات السوشيال ميديا', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=400&q=80" alt="Sports" class="card-img">
+      <div><h3>الرياضة</h3><p>اشتراكات ومحتوى رياضي وباقات مشاهدة حسب المتوفر.</p></div>
+      <button class="btn-card" onclick="addToCart('باقة مشاهدة رياضية', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=80" alt="Movies" class="card-img">
+      <div><h3>الأفلام والمسلسلات</h3><p>ترفيه متجدد ومكتبات مشاهدة عبر الخدمات المتاحة.</p></div>
+      <button class="btn-card" onclick="addToCart('اشتراك أفلام ومسلسلات', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="Digital Services" class="card-img">
+      <div><h3>الخدمات الرقمية</h3><p>خدمات وتطبيقات وحلول رقمية متنوعة، اسألنا عن المتوفر.</p></div>
+      <button class="btn-card" onclick="addToCart('خدمة رقمية خاصة', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
   </div>
 </section>
 
 <section class="container section" id="offers">
   <div class="head"><div><div class="eyebrow">HOT DEALS</div><h2>🔥 عروض الاشتراكات</h2><p>باقات مختارة بعناية لتكون سهلة للزبون</p></div></div>
   <div class="offers">
-    <article class="offer featured"><span class="tag">⭐ الأكثر طلباً</span><h3>MAX TV PRO</h3><div class="desc">قنوات وترفيه وأفلام ومسلسلات بجودة عالية.</div>
+    <article class="offer featured"><span class="tag">⭐ الأكثر طلباً</span>
+      <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=500&q=80" alt="MAX TV" class="offer-img">
+      <h3>MAX TV PRO</h3><div class="desc">قنوات وترفيه وأفلام ومسلسلات بجودة عالية.</div>
       <div class="pricebox">
         <div class="row"><span>شهر</span><strong>5,000 د.ع</strong><button class="btn-sm" onclick="addToCart('MAX TV PRO - شهر', 5000)">+ سلة</button></div>
         <div class="row"><span>3 أشهر</span><strong>10,000 د.ع</strong><button class="btn-sm" onclick="addToCart('MAX TV PRO - 3 أشهر', 10000)">+ سلة</button></div>
@@ -244,7 +319,9 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
         <div class="row"><span>سنة</span><strong>25,000 د.ع</strong><button class="btn-sm" onclick="addToCart('MAX TV PRO - سنة', 25000)">+ سلة</button></div>
       </div>
     </article>
-    <article class="offer"><span class="tag">🔥 ULTRA HD</span><h3>BEST 4K</h3><div class="desc">مشاهدة 4K وFHD مع القنوات الرياضية والمكتبة.</div>
+    <article class="offer"><span class="tag">🔥 ULTRA HD</span>
+      <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=500&q=80" alt="BEST 4K" class="offer-img">
+      <h3>BEST 4K</h3><div class="desc">مشاهدة 4K وFHD مع القنوات الرياضية والمكتبة.</div>
       <div class="pricebox">
         <div class="row"><span>شهر</span><strong>5,000 د.ع</strong><button class="btn-sm" onclick="addToCart('BEST 4K - شهر', 5000)">+ سلة</button></div>
         <div class="row"><span>3 أشهر</span><strong>10,000 د.ع</strong><button class="btn-sm" onclick="addToCart('BEST 4K - 3 أشهر', 10000)">+ سلة</button></div>
@@ -252,7 +329,9 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
         <div class="row"><span>سنة</span><strong>25,000 د.ع</strong><button class="btn-sm" onclick="addToCart('BEST 4K - سنة', 25000)">+ سلة</button></div>
       </div>
     </article>
-    <article class="offer"><span class="tag">🐯 PREMIUM</span><h3>TIGER OTT</h3><div class="desc">مشغل للموبايل والحاسبة والشاشات الذكية.</div>
+    <article class="offer"><span class="tag">🐯 PREMIUM</span>
+      <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=500&q=80" alt="TIGER OTT" class="offer-img">
+      <h3>TIGER OTT</h3><div class="desc">مشغل للموبايل والحاسبة والشاشات الذكية.</div>
       <div class="pricebox">
         <div class="row"><span>شهر</span><strong>3,000 د.ع</strong><button class="btn-sm" onclick="addToCart('TIGER OTT - شهر', 3000)">+ سلة</button></div>
         <div class="row"><span>سنة</span><strong>17,500 د.ع</strong><button class="btn-sm" onclick="addToCart('TIGER OTT - سنة', 17500)">+ سلة</button></div>
@@ -263,33 +342,73 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
 
 <section class="container section">
   <div class="experience">
-    <div><div class="eyebrow">TRY BEFORE YOU SUBSCRIBE</div><h2 style="margin:8px 0">🎁 تجربة الخدمة</h2><p style="color:var(--muted);font-size:13px;line-height:1.8">إذا تريد تجرب الخدمة قبل الاشتراك، تواصل معنا مباشرة لمعرفة المتوفر.</p></div>
+    <div><div class="eyebrow">TRY BEFORE YOU SUBSCRIBE</div><h2 style="margin:8px 0">🎁 تجربة الخدمة</h2><p style="color:var(--muted);font-size:14px;line-height:1.8">إذا تريد تجرب الخدمة قبل الاشتراك، تواصل معنا مباشرة لمعرفة المتوفر.</p></div>
     <div style="text-align:center"><div class="exp-price">1,000</div><div style="color:#aaa">د.ع أجور التجربة</div>
     <button class="btn green" style="margin-top:12px;width:100%" onclick="addToCart('تجربة خدمة IPTV', 1000)">🛒 أضف التجربة للسلة</button></div>
   </div>
 </section>
 
 <section class="container section" id="games">
-  <div class="head"><div><div class="eyebrow">TOP UP</div><h2>🎮 شحن الألعاب</h2><p>اختر اللعبة وأرسل طلبك عبر واتساب</p></div></div>
+  <div class="head"><div><div class="eyebrow">TOP UP</div><h2>🎮 شحن الألعاب</h2><p>اختر اللعبة وأرسل طلبك عبر السلة مباشرة</p></div></div>
   <div class="grid4">
-    <div class="card"><div class="icon">PUBG</div><h3>PUBG MOBILE</h3><p>شحن شدات حسب الكمية المطلوبة.</p><a class="btn green" style="margin-top:14px;width:100%" target="_blank" href="https://wa.me/9647760361911?text=أريد%20شحن%20PUBG%20MOBILE">طلب الشحن</a></div>
-    <div class="card"><div class="icon">FF</div><h3>FREE FIRE</h3><p>شحن عملات فري فاير بسرعة.</p><a class="btn green" style="margin-top:14px;width:100%" target="_blank" href="https://wa.me/9647760361911?text=أريد%20شحن%20FREE%20FIRE">طلب الشحن</a></div>
-    <div class="card"><div class="icon">🎲</div><h3>يلا لودو</h3><p>شحن الذهب والماس حسب المتوفر.</p><a class="btn green" style="margin-top:14px;width:100%" target="_blank" href="https://wa.me/9647760361911?text=أريد%20شحن%20يلا%20لودو">طلب الشحن</a></div>
-    <div class="card"><div class="icon">eF</div><h3>eFootball</h3><p>شحن وخدمات اللعبة حسب المتوفر.</p><a class="btn green" style="margin-top:14px;width:100%" target="_blank" href="https://wa.me/9647760361911?text=أريد%20شحن%20eFootball">طلب الشحن</a></div>
+    <div class="card" style="grid-column: span 2;">
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="PUBG" class="card-img" style="height:140px;">
+      <div>
+        <h3>PUBG MOBILE — شحن شدات ببجي</h3>
+        <p>شحن عن طريق ID مباشرة وبأسرع وقت.</p>
+        <div class="pricebox">
+          <div class="row"><span>60 شدة (UC)</span><strong>2,000 د.ع</strong><button class="btn-sm" onclick="addToCart('ببجي - 60 شدة', 2000)">+ سلة</button></div>
+          <div class="row"><span>325 شدة (UC)</span><strong>7,000 د.ع</strong><button class="btn-sm" onclick="addToCart('ببجي - 325 شدة', 7000)">+ سلة</button></div>
+          <div class="row"><span>660 شدة (UC)</span><strong>14,000 د.ع</strong><button class="btn-sm" onclick="addToCart('ببجي - 660 شدة', 14000)">+ سلة</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=400&q=80" alt="Free Fire" class="card-img">
+      <div><h3>FREE FIRE</h3><p>شحن جواهر وعملات فري فاير بسرعة.</p></div><button class="btn-card" onclick="addToCart('شحن فري فاير', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=400&q=80" alt="Yalla Ludo" class="card-img">
+      <div><h3>يلا لودو</h3><p>شحن الذهب والماس للعبة يلا لودو.</p></div><button class="btn-card" onclick="addToCart('شحن يلا لودو', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
   </div>
 </section>
 
 <section class="container section" id="cards">
-  <div class="head"><div><div class="eyebrow">DIGITAL PAYMENTS</div><h2>💳 البطاقات والمحافظ</h2><p>خدمات رقمية متعددة في مكان واحد</p></div></div>
+  <div class="head"><div><div class="eyebrow">DIGITAL PAYMENTS</div><h2>💳 البطاقات والمحافظ</h2><p>خدمات رقمية متعددة قابلة للطلب المباشر</p></div></div>
   <div class="grid4">
-    <div class="card"><div class="icon">💳</div><h3>Baly — بلي</h3><p>بطاقات وشحن حسب المتوفر.</p></div>
-    <div class="card"><div class="icon">🚕</div><h3>Careem — كريم</h3><p>بطاقات وخدمات كريم.</p></div>
-    <div class="card"><div class="icon">📱</div><h3>Zain Cash</h3><p>شحن وتحويل وخدمات إلكترونية.</p></div>
-    <div class="card"><div class="icon">⚡</div><h3>FastPay</h3><p>دفع وشحن إلكتروني.</p></div>
-    <div class="card"><div class="icon">🍎</div><h3>Apple Gift Card</h3><p>بطاقات حسب الدولة والفئة.</p></div>
-    <div class="card"><div class="icon">▶️</div><h3>Google Play</h3><p>بطاقات Google Play.</p></div>
-    <div class="card"><div class="icon">🎮</div><h3>Gaming Cards</h3><p>بطاقات وشحن للألعاب.</p></div>
-    <div class="card"><div class="icon">📲</div><h3>AsiaPay</h3><p>خدمات شحن ودفع إلكترونية.</p></div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=400&q=80" alt="Baly" class="card-img">
+      <div><h3>Baly — بلي</h3><p>بطاقات وشحن رصيد بلي.</p></div><button class="btn-card" onclick="addToCart('بطاقات Baly', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=400&q=80" alt="Careem" class="card-img">
+      <div><h3>Careem — كريم</h3><p>بطاقات وقسائم كريم.</p></div><button class="btn-card" onclick="addToCart('بطاقات Careem', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=400&q=80" alt="Zain Cash" class="card-img">
+      <div><h3>Zain Cash</h3><p>شحن وتحويل وخدمات إلكترونية.</p></div><button class="btn-card" onclick="addToCart('خدمة Zain Cash', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=400&q=80" alt="FastPay" class="card-img">
+      <div><h3>FastPay</h3><p>دفع وشحن إلكتروني سريع.</p></div><button class="btn-card" onclick="addToCart('خدمة FastPay', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80" alt="Apple Card" class="card-img">
+      <div><h3>Apple Gift Card</h3><p>بطاقات متجر أبل آيتونز.</p></div><button class="btn-card" onclick="addToCart('بطاقة Apple (10$)', 15000)">🛒 أضف للسلة (15,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80" alt="Google Play" class="card-img">
+      <div><h3>Google Play</h3><p>بطاقات شحن جوجل بلاي.</p></div><button class="btn-card" onclick="addToCart('بطاقة Google Play (10$)', 15000)">🛒 أضف للسلة (15,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=400&q=80" alt="Gaming Cards" class="card-img">
+      <div><h3>Gaming Cards</h3><p>بطاقات وشحن الألعاب المختلفة.</p></div><button class="btn-card" onclick="addToCart('بطاقات ألعاب متنوعة', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=400&q=80" alt="AsiaPay" class="card-img">
+      <div><h3>AsiaPay</h3><p>خدمات شحن ودفع إلكتروني.</p></div><button class="btn-card" onclick="addToCart('خدمة AsiaPay', 10000)">🛒 أضف للسلة (10,000 د.ع)</button>
+    </div>
   </div>
 </section>
 
@@ -303,24 +422,60 @@ background:linear-gradient(135deg,#9b5cff32,#ee3d9d18);margin-bottom:14px}
 <section class="container section">
   <div class="head"><div><div class="eyebrow">ENTERTAINMENT</div><h2>🔥 عالم الترفيه</h2><p>أفلام ومسلسلات ورياضة ومحتوى متجدد</p></div></div>
   <div class="media">
-    <div class="media-card"><div class="emoji">🎬</div><div><small>MOVIES</small><h3>أحدث الأفلام</h3></div></div>
-    <div class="media-card"><div class="emoji">📺</div><div><small>SERIES</small><h3>أحدث المسلسلات</h3></div></div>
-    <div class="media-card"><div class="emoji">⚽</div><div><small>SPORTS</small><h3>المباريات والرياضة</h3></div></div>
-    <div class="media-card"><div class="emoji">🍿</div><div><small>ENTERTAINMENT</small><h3>ترفيه متجدد</h3></div></div>
+    <div class="media-card">
+      <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=80" class="bg-img" alt="Movies">
+      <div><small>MOVIES</small><h3>أحدث الأفلام</h3></div>
+    </div>
+    <div class="media-card">
+      <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=400&q=80" class="bg-img" alt="Series">
+      <div><small>SERIES</small><h3>أحدث المسلسلات</h3></div>
+    </div>
+    <div class="media-card">
+      <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=400&q=80" class="bg-img" alt="Sports">
+      <div><small>SPORTS</small><h3>المباريات والرياضة</h3></div>
+    </div>
+    <div class="media-card">
+      <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=400&q=80" class="bg-img" alt="Entertainment">
+      <div><small>ENTERTAINMENT</small><h3>ترفيه متجدد</h3></div>
+    </div>
   </div>
 </section>
 
 <section class="container section">
-  <div class="head"><div><div class="eyebrow">SOCIAL</div><h2>📣 السوشيال ميديا</h2><p>خدمات رقمية حسب المتوفر</p></div></div>
+  <div class="head"><div><div class="eyebrow">SOCIAL</div><h2>📣 السوشيال ميديا</h2><p>خدمات رقمية للترويج والتفاعل</p></div></div>
   <div class="grid4">
-    <div class="card"><div class="icon">📘</div><h3>Facebook</h3><p>ترويج وتفاعل حسب المتوفر.</p></div>
-    <div class="card"><div class="icon">📸</div><h3>Instagram</h3><p>تفاعل ومشاهدات حسب المتوفر.</p></div>
-    <div class="card"><div class="icon">🎵</div><h3>TikTok</h3><p>ترويج ومشاهدات حسب المتوفر.</p></div>
-    <div class="card"><div class="icon">▶️</div><h3>YouTube</h3><p>خدمات القنوات والفيديوهات.</p></div>
-    <div class="card"><div class="icon">✈️</div><h3>Telegram</h3><p>خدمات القنوات والمجموعات.</p></div>
-    <div class="card"><div class="icon">👻</div><h3>Snapchat</h3><p>خدمات الحسابات والمحتوى.</p></div>
-    <div class="card"><div class="icon">𝕏</div><h3>X / Twitter</h3><p>تفاعل وترويج حسب المتوفر.</p></div>
-    <div class="card"><div class="icon">➕</div><h3>خدمة خاصة</h3><p>إذا لم تجد خدمتك، اسألنا مباشرة.</p></div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=400&q=80" alt="Facebook" class="card-img">
+      <div><h3>Facebook</h3><p>ترويج وتفاعل وصفحات.</p></div><button class="btn-card" onclick="addToCart('خدمات Facebook', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&w=400&q=80" alt="Instagram" class="card-img">
+      <div><h3>Instagram</h3><p>متابعين وتفاعل ومشاهدات.</p></div><button class="btn-card" onclick="addToCart('خدمات Instagram', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1596558450255-7c0b7be9d56a?auto=format&fit=crop&w=400&q=80" alt="TikTok" class="card-img">
+      <div><h3>TikTok</h3><p>ترويج ومشاهدات وتفاعل.</p></div><button class="btn-card" onclick="addToCart('خدمات TikTok', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=400&q=80" alt="YouTube" class="card-img">
+      <div><h3>YouTube</h3><p>خدمات القنوات والفيديوهات.</p></div><button class="btn-card" onclick="addToCart('خدمات YouTube', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1614680376593-902f749f7b2c?auto=format&fit=crop&w=400&q=80" alt="Telegram" class="card-img">
+      <div><h3>Telegram</h3><p>اعضاء وقنوات ومجموعات.</p></div><button class="btn-card" onclick="addToCart('خدمات Telegram', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?auto=format&fit=crop&w=400&q=80" alt="Snapchat" class="card-img">
+      <div><h3>Snapchat</h3><p>خدمات الحسابات والمحتوى.</p></div><button class="btn-card" onclick="addToCart('خدمات Snapchat', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=400&q=80" alt="Twitter/X" class="card-img">
+      <div><h3>X / Twitter</h3><p>تفاعل وترويج وتغريدات.</p></div><button class="btn-card" onclick="addToCart('خدمات X / Twitter', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80" alt="Special Service" class="card-img">
+      <div><h3>خدمة خاصة</h3><p>طلب تخصيص أي خدمة إلكترونية.</p></div><button class="btn-card" onclick="addToCart('طلب خدمة خاصة', 5000)">🛒 أضف للسلة (5,000 د.ع)</button>
+    </div>
   </div>
 </section>
 
