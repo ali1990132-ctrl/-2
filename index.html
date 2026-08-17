@@ -2,17 +2,20 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>فاطمة ستور | Fatima Store</title>
 <style>
 :root {
-  --bg-color: #0d0e15;
-  --card-bg: #161824;
-  --accent-purple: #8b5cf6;
-  --accent-green: #22c55e;
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --border-color: rgba(255, 255, 255, 0.08);
+  --bg-main: #0a0c14;
+  --surface: #121624;
+  --surface-card: #1a2035;
+  --accent-primary: #8b5cf6;
+  --accent-glow: rgba(139, 92, 246, 0.25);
+  --green-wa: #22c55e;
+  --green-wa-glow: rgba(34, 197, 94, 0.3);
+  --text-primary: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-light: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -24,203 +27,425 @@
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  padding-bottom: 30px;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  padding-bottom: 90px;
   max-width: 480px;
   margin: 0 auto;
+  min-height: 100vh;
 }
 
-/* App Header */
-.app-header {
+/* App Bar */
+.app-bar {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(13, 14, 21, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-color);
-  padding: 16px 20px;
+  background: rgba(10, 12, 20, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 14px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.brand {
+.brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .brand-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--accent-purple), #ec4899);
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  border-radius: 12px;
   display: grid;
   place-items: center;
-  font-weight: bold;
-  font-size: 18px;
+  font-weight: 900;
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.35);
 }
 
-.brand-title {
+.brand-title h1 {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.brand-title span {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: block;
+  margin-top: -2px;
+}
+
+.status-badge {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+/* Category Slider */
+.categories-wrapper {
+  padding: 16px 0 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  display: flex;
+  gap: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.categories-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.chip {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.chip.active {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+/* Grid Layout */
+.section-header {
+  padding: 16px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header h2 {
   font-size: 16px;
   font-weight: 700;
 }
 
-/* Banner */
-.hero-banner {
-  margin: 16px;
-  padding: 20px;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.1));
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  border-radius: 18px;
-  text-align: center;
-}
-
-.hero-banner h2 {
-  font-size: 20px;
-  margin-bottom: 6px;
-  color: #fff;
-}
-
-.hero-banner p {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-/* Products Section */
-.section-title {
-  padding: 12px 20px 8px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.product-list {
-  display: flex;
-  flex-direction: column;
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   padding: 0 16px;
 }
 
+/* Product Card */
 .product-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 16px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  transition: transform 0.2s ease;
-}
-
-.product-card:active {
-  transform: scale(0.98);
-}
-
-.product-info h3 {
-  font-size: 16px;
-  color: var(--text-main);
-  margin-bottom: 4px;
-}
-
-.product-info p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-.product-bottom {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.product-price {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--accent-purple);
+.card-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(139, 92, 246, 0.2);
+  color: #c084fc;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
 }
 
-.wa-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background-color: var(--accent-green);
-  color: #000;
-  font-weight: 700;
-  font-size: 13px;
-  padding: 10px 16px;
+.product-icon-wrap {
+  width: 44px;
+  height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
   border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.product-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.product-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.4;
+  height: 30px;
+  overflow: hidden;
+}
+
+.price-tag {
+  font-size: 15px;
+  font-weight: 800;
+  color: #a7f3d0;
+  margin-bottom: 10px;
+}
+
+.wa-action-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+  box-shadow: 0 4px 12px var(--green-wa-glow);
+}
+
+.wa-action-btn:active {
+  transform: scale(0.97);
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: rgba(18, 22, 36, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0 14px;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.nav-item.active {
+  color: var(--accent-primary);
+}
+
+.nav-icon {
+  font-size: 18px;
 }
 </style>
 </head>
 <body>
 
-<header class="app-header">
-  <div class="brand">
+<!-- Header -->
+<header class="app-bar">
+  <div class="brand-wrapper">
     <div class="brand-icon">ف</div>
-    <div class="brand-title">فاطمة ستور</div>
+    <div class="brand-title">
+      <h1>فاطمة ستور</h1>
+      <span>الخدمات والاشتراكات الرقمية</span>
+    </div>
+  </div>
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    متصل
   </div>
 </header>
 
-<section class="hero-banner">
-  <h2>الخدمات الرقمية والاشتراكات</h2>
-  <p>اختر الخدمة اضغط للطلب مباشرة عبر الواتساب</p>
-</section>
+<!-- Categories -->
+<div class="categories-wrapper">
+  <div class="chip active">الكل</div>
+  <div class="chip">اشتراكات TV</div>
+  <div class="chip">شحن ألعاب</div>
+  <div class="chip">بطاقات إلكترونية</div>
+  <div class="chip">سوشيال ميديا</div>
+</div>
 
-<div class="section-title">الأكثر طلباً</div>
+<div class="section-header">
+  <h2>جميع المنتجات</h2>
+</div>
 
-<main class="product-list">
+<!-- Products Grid -->
+<main class="products-grid">
 
+  <!-- Card 1 -->
   <div class="product-card">
-    <div class="product-info">
-      <h3>اشتراك MAX TV PRO</h3>
-      <p>مشاهدة القنوات والأفلام والمسلسلات بجودة عالية وبدون تقطيع.</p>
+    <div>
+      <div class="product-icon-wrap">📺</div>
+      <h3 class="product-title">MAX TV PRO</h3>
+      <p class="product-desc">اشتراك IPTV لمدة شهر للقنوات والأفلام.</p>
     </div>
-    <div class="product-bottom">
-      <span class="product-price">5,000 د.ع</span>
-      <a class="wa-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20اشتراك%20MAX%20TV%20PRO">طلب عبر واتساب 💬</a>
+    <div>
+      <div class="price-tag">5,000 د.ع</div>
+      <a class="wa-action-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20TV%20PRO%20(شهر)">
+        طلب عبر واتساب
+      </a>
     </div>
   </div>
 
+  <!-- Card 2 -->
   <div class="product-card">
-    <div class="product-info">
-      <h3>شحن شدات ببجي (660 UC)</h3>
-      <p>تسليم سريع ومباشر عن طريق الـ ID الخاص بك.</p>
+    <div>
+      <div class="product-icon-wrap">🍿</div>
+      <h3 class="product-title">BEST 4K</h3>
+      <p class="product-desc">باقة 4K للمباريات والمحتوى الترفيهي.</p>
     </div>
-    <div class="product-bottom">
-      <span class="product-price">14,000 د.ع</span>
-      <a class="wa-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20شحن%20شدات%20ببجي%20660UC">طلب عبر واتساب 💬</a>
+    <div>
+      <div class="price-tag">5,000 د.ع</div>
+      <a class="wa-action-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(شهر)">
+        طلب عبر واتساب
+      </a>
     </div>
   </div>
 
+  <!-- Card 3 -->
   <div class="product-card">
-    <div class="product-info">
-      <h3>بطاقة Apple Gift Card ($10)</h3>
-      <p>بطاقة شحن متجر أبل آيتونز للايفون والايباد.</p>
+    <span class="card-tag">الأكثر طلباً</span>
+    <div>
+      <div class="product-icon-wrap">🔫</div>
+      <h3 class="product-title">شدات ببجي 660</h3>
+      <p class="product-desc">شحن مباشر وسريع عبر الـ ID.</p>
     </div>
-    <div class="product-bottom">
-      <span class="product-price">15,000 د.ع</span>
-      <a class="wa-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20بطاقة%20أبل%2010%24">طلب عبر واتساب 💬</a>
+    <div>
+      <div class="price-tag">14,000 د.ع</div>
+      <a class="wa-action-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20شدات%20ببجي%20660%20UC">
+        طلب عبر واتساب
+      </a>
     </div>
   </div>
 
+  <!-- Card 4 -->
   <div class="product-card">
-    <div class="product-info">
-      <h3>خدمات زيادة متابعين انستغرام</h3>
-      <p>دعم وتفاعل مخصص للحسابات والصفحات.</p>
+    <div>
+      <div class="product-icon-wrap">💎</div>
+      <h3 class="product-title">جواهر فري فاير</h3>
+      <p class="product-desc">شحن حسابات فري فاير فورياً.</p>
     </div>
-    <div class="product-bottom">
-      <span class="product-price">5,000 د.ع</span>
-      <a class="wa-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20خدمات%20انستغرام">طلب عبر واتساب 💬</a>
+    <div>
+      <div class="price-tag">10,000 د.ع</div>
+      <a class="wa-action-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20جواهر%20فري%20فاير">
+        طلب عبر واتساب
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="product-card">
+    <div>
+      <div class="product-icon-wrap">🍏</div>
+      <h3 class="product-title">بطاقة Apple $10</h3>
+      <p class="product-desc">كود شحن متجر أيتونز الأمريكي.</p>
+    </div>
+    <div>
+      <div class="price-tag">15,000 د.ع</div>
+      <a class="wa-action-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20بطاقة%20أبل%2010%24">
+        طلب عبر واتساب
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="product-card">
+    <div>
+      <div class="product-icon-wrap">🎮</div>
+      <h3 class="product-title">Google Play $10</h3>
+      <p class="product-desc">بطاقة شحن متجر جوجل بلاي.</p>
+    </div>
+    <div>
+      <div class="price-tag">15,000 د.ع</div>
+      <a class="wa-action-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20بطاقة%20جوجل%20بلاي%2010%24">
+        طلب عبر واتساب
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="product-card">
+    <div>
+      <div class="product-icon-wrap">📈</div>
+      <h3 class="product-title">دعم انستغرام</h3>
+      <p class="product-desc">خدمات متابعين وتفاعل الحسابات.</p>
+    </div>
+    <div>
+      <div class="price-tag">5,000 د.ع</div>
+      <a class="wa-action-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20دعم%20حساب%20انستغرام">
+        طلب عبر واتساب
+      </a>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="product-card">
+    <div>
+      <div class="product-icon-wrap">🎵</div>
+      <h3 class="product-title">دعم تيك توك</h3>
+      <p class="product-desc">زيادة مشاهدات وتفاعل الفيديوهات.</p>
+    </div>
+    <div>
+      <div class="price-tag">5,000 د.ع</div>
+      <a class="wa-action-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20دعم%20تيك%20توك">
+        طلب عبر واتساب
+      </a>
     </div>
   </div>
 
 </main>
+
+<!-- Navigation Bar -->
+<nav class="bottom-nav">
+  <a href="#" class="nav-item active">
+    <span class="nav-icon">🏠</span>
+    <span>الرئيسية</span>
+  </a>
+  <a href="#" class="nav-item">
+    <span class="nav-icon">📦</span>
+    <span>المنتجات</span>
+  </a>
+  <a href="https://wa.me/9647760361911" class="nav-item" target="_blank">
+    <span class="nav-icon">💬</span>
+    <span>الدعم</span>
+  </a>
+</nav>
 
 </body>
 </html>
