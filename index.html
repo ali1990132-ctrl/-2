@@ -13,6 +13,7 @@
   --accent-pink: #ff2a85;
   --accent-green: #10b981;
   --accent-cyan: #06b6d4;
+  --accent-amber: #f59e0b;
   --text-main: #f8fafc;
   --text-sub: #94a3b8;
   --border-glow: rgba(157, 78, 223, 0.25);
@@ -107,17 +108,55 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero Banner */
-.hero-card {
-  margin: 16px;
-  padding: 20px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, rgba(157, 78, 223, 0.25), rgba(255, 42, 133, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Hero Banner & Trial Card */
+.trial-card {
+  margin: 16px 16px 8px;
+  padding: 16px 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(255, 42, 133, 0.15));
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.hero-card h2 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
-.hero-card p { font-size: 12px; color: #cbd5e1; }
+.trial-text h2 { font-size: 15px; font-weight: 800; color: #fbbf24; }
+.trial-text p { font-size: 11px; color: #cbd5e1; margin-top: 2px; }
+
+.trial-btn {
+  background: var(--accent-amber);
+  color: #000;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.speed-test-banner {
+  margin: 0 16px 16px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: var(--surface-1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.speed-text { font-size: 12px; font-weight: 700; color: var(--accent-cyan); display: flex; align-items: center; gap: 6px; }
+
+.speed-btn {
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: #22d3ee;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
 
 /* Grid Cards */
 .grid-title {
@@ -193,7 +232,7 @@ body {
 
 .plan-info h3 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
 .plan-info p { font-size: 12px; color: var(--text-sub); }
-.plan-price { font-size: 15px; font-weight: 900; color: #6ee7b7; margin-top: 4px; }
+.plan-price { font-size: 14px; font-weight: 900; color: #6ee7b7; margin-top: 4px; }
 
 .wa-buy-btn {
   background: linear-gradient(135deg, #10b981, #059669);
@@ -251,7 +290,7 @@ body {
     <div class="logo-badge">ف</div>
     <div class="brand-text">
       <h1 id="header-title">فاطمة ستور</h1>
-      <p id="header-subtitle">اضغط على التطبيق لعرض الباقات</p>
+      <p id="header-subtitle">اختر القسم للتنقل بين الخدمات</p>
     </div>
   </div>
   <button class="back-btn" id="backBtn" onclick="showHome()">← العودة</button>
@@ -259,51 +298,82 @@ body {
 
 <!-- MAIN HOME VIEW -->
 <div id="home-view" class="view active">
-  <section class="hero-card">
-    <h2>الاشتراكات والبطاقات الرقمية ⚡</h2>
-    <p>اختر الخدمة أو البرنامج للانتقال لصفحة الاشتراك المباشر.</p>
+  
+  <!-- Trial Offer Banner -->
+  <section class="trial-card">
+    <div class="trial-text">
+      <h2>🎁 تجربة الاشتراكات</h2>
+      <p>أجور التجربة 1,000 د.ع فقط</p>
+    </div>
+    <a class="trial-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب%20تجربة%20اشتراك%20(1000%20د.ع)">طلب تجربة</a>
   </section>
 
-  <div class="grid-title">البرامج والخدمات المتاحة</div>
+  <!-- Speed Test Banner -->
+  <div class="speed-test-banner">
+    <div class="speed-text">⚡ فحص سرعة الإنترنت</div>
+    <a href="https://fast.com" target="_blank" class="speed-btn">افحص الآن ↗</a>
+  </div>
+
+  <div class="grid-title">الأقسام والخدمات المتاحة</div>
 
   <main class="products-grid">
     
-    <!-- MAX TV Card -->
-    <div class="app-card" onclick="openPage('max-view', 'MAX TV PRO')">
+    <!-- IPTV Apps Category -->
+    <div class="app-card" onclick="openPage('iptv-view', 'اشتراكات IPTV')">
       <div>
         <div class="icon-box">📺</div>
-        <h3 class="app-title">MAX TV PRO</h3>
-        <p class="app-desc">اشتراكات شهرية وسنوية للقنوات والأفلام.</p>
+        <h3 class="app-title">اشتراكات IPTV</h3>
+        <p class="app-desc">MAX, BEST 4K, TIGER, TOD وغيرها...</p>
       </div>
-      <div class="action-label">عرض الباقات ←</div>
+      <div class="action-label">عرض السيرفرات ←</div>
     </div>
 
-    <!-- PUBG Card -->
-    <div class="app-card" onclick="openPage('pubg-view', 'شدات ببجي')">
+    <!-- Players Category -->
+    <div class="app-card" onclick="openPage('players-view', 'مشغلات القنوات')">
       <div>
-        <div class="icon-box">🔫</div>
-        <h3 class="app-title">شدات ببجي</h3>
-        <p class="app-desc">باقات شحن الشدات المباشرة عن طريق ID.</p>
+        <div class="icon-box">📲</div>
+        <h3 class="app-title">المشغلات</h3>
+        <p class="app-desc">IBO Player, Smarters, Televizo, OTT...</p>
       </div>
-      <div class="action-label">عرض الباقات ←</div>
+      <div class="action-label">عرض والتفعيل ←</div>
     </div>
 
-    <!-- Apple Gift Card -->
-    <div class="app-card" onclick="openPage('apple-view', 'بطاقات أبل')">
+    <!-- Gaming Recharge Category -->
+    <div class="app-card" onclick="openPage('games-view', 'شحن الألعاب')">
       <div>
-        <div class="icon-box">🍏</div>
-        <h3 class="app-title">بطاقات Apple</h3>
-        <p class="app-desc">كروت متجر أبل آيتونز بمختلف الفئات.</p>
+        <div class="icon-box">🎮</div>
+        <h3 class="app-title">شحن الألعاب</h3>
+        <p class="app-desc">PUBG, Free Fire, eFootball, Yalla Ludo...</p>
       </div>
-      <div class="action-label">عرض الفئات ←</div>
+      <div class="action-label">عرض الألعاب ←</div>
     </div>
 
-    <!-- Social Media Card -->
-    <div class="app-card" onclick="openPage('social-view', 'السوشيال ميديا')">
+    <!-- Cards Category -->
+    <div class="app-card" onclick="openPage('cards-view', 'البطاقات الإلكترونية')">
       <div>
-        <div class="icon-box">🚀</div>
+        <div class="icon-box">💳</div>
+        <h3 class="app-title">البطاقات</h3>
+        <p class="app-desc">Google Play, Apple, Steam, PlayStation, Xbox...</p>
+      </div>
+      <div class="action-label">عرض البطاقات ←</div>
+    </div>
+
+    <!-- Wallets Category -->
+    <div class="app-card" onclick="openPage('wallets-view', 'المحافظ والخدمات')">
+      <div>
+        <div class="icon-box">🏦</div>
+        <h3 class="app-title">المحافظ الإلكترونية</h3>
+        <p class="app-desc">خدمات وسحب وتحويل المحافظ والخدمات المالية.</p>
+      </div>
+      <div class="action-label">التفاصيل ←</div>
+    </div>
+
+    <!-- Social Media Category -->
+    <div class="app-card" onclick="openPage('social-view', 'خدمات السوشيال ميديا')">
+      <div>
+        <div class="icon-box">📣</div>
         <h3 class="app-title">السوشيال ميديا</h3>
-        <p class="app-desc">دعم متابعين وتفاعل لانستغرام وتيك توك.</p>
+        <p class="app-desc">زيادة متابعين وتفاعل لجميع المنصات.</p>
       </div>
       <div class="action-label">عرض الباقات ←</div>
     </div>
@@ -311,89 +381,134 @@ body {
   </main>
 </div>
 
-<!-- SUB VIEW: MAX TV -->
-<div id="max-view" class="view">
+<!-- SUB VIEW: IPTV -->
+<div id="iptv-view" class="view">
   <div class="plans-list">
     <div class="plan-card">
       <div class="plan-info">
-        <h3>اشتراك شهر واحد</h3>
-        <p>باقة الجودة العالية بدون تقطيع</p>
-        <div class="plan-price">5,000 د.ع</div>
+        <h3>سيرفر MAX</h3>
+        <p>باقة القنوات الرياضية والترفيهية 4K</p>
+        <div class="plan-price">حسب المدة المطلوبة</div>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20TV%20(شهر)">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20سيرفر%20MAX">💬 طلب</a>
     </div>
-
     <div class="plan-card">
       <div class="plan-info">
-        <h3>اشتراك 3 أشهر</h3>
-        <p>توفير ممتازة للمشاهدة المستمرة</p>
-        <div class="plan-price">10,000 د.ع</div>
+        <h3>سيرفر BEST 4K</h3>
+        <p>جودة عالية وثبات عالي للمباريات</p>
+        <div class="plan-price">حسب المدة المطلوبة</div>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20TV%20(3%20أشهر)">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20سيرفر%20BEST%204K">💬 طلب</a>
     </div>
-
     <div class="plan-card">
       <div class="plan-info">
-        <h3>اشتراك سنة كاملة</h3>
-        <p>العرض الأقوى + سيرفر احتياطي</p>
-        <div class="plan-price">25,000 د.ع</div>
+        <h3>سيرفر TIGER</h3>
+        <p>مكتبة أفلام ومسلسلات ضخمة</p>
+        <div class="plan-price">حسب المدة المطلوبة</div>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20TV%20(سنة)">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20سيرفر%20TIGER">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>اشتراك TOD</h3>
+        <p>متابعة رسمية للمحتوى الرياضي</p>
+        <div class="plan-price">حسب المدة المطلوبة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20اشتراك%20TOD">💬 طلب</a>
     </div>
   </div>
 </div>
 
-<!-- SUB VIEW: PUBG -->
-<div id="pubg-view" class="view">
+<!-- SUB VIEW: PLAYERS -->
+<div id="players-view" class="view">
   <div class="plans-list">
     <div class="plan-card">
       <div class="plan-info">
-        <h3>60 شدة (UC)</h3>
-        <p>شحن أوتوماتيكي عبر الـ ID</p>
-        <div class="plan-price">2,000 د.ع</div>
+        <h3>تفعيل IBO Player / Pro</h3>
+        <p>تفعيل التطبيق للشاشات والأجهزة</p>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20ببجي%2060UC">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تفعيل%20تطبيق%20IBO%20Player">💬 تفعيل</a>
     </div>
-
     <div class="plan-card">
       <div class="plan-info">
-        <h3>325 شدة (UC)</h3>
-        <p>شحن فورس وسريع جداً</p>
-        <div class="plan-price">7,000 د.ع</div>
+        <h3>تطبيق IPTV Smarters</h3>
+        <p>إعداد وتجهيز الاشتراك على السمارترز</p>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20ببجي%20325UC">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تشغيل%20Smarters">💬 طلب</a>
     </div>
-
     <div class="plan-card">
       <div class="plan-info">
-        <h3>660 شدة (UC)</h3>
-        <p>باقة الرويال باس المعتادة</p>
-        <div class="plan-price">14,000 د.ع</div>
+        <h3>Televizo / OTT Navigator</h3>
+        <p>تفعيل وإعداد المشغلات الذكية</p>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20ببجي%20660UC">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20إعداد%20مشغل%20Televizo/OTT">💬 طلب</a>
     </div>
   </div>
 </div>
 
-<!-- SUB VIEW: APPLE -->
-<div id="apple-view" class="view">
+<!-- SUB VIEW: GAMES -->
+<div id="games-view" class="view">
   <div class="plans-list">
     <div class="plan-card">
       <div class="plan-info">
-        <h3>بطاقة 5$ دولار</h3>
-        <p>متجر أبل الأمريكي</p>
-        <div class="plan-price">8,000 د.ع</div>
+        <h3>شدات PUBG Mobile</h3>
+        <p>شحن مباشر وسريع عبر الـ ID</p>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20بطاقة%20أبل%205%24">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20شدات%20ببجي">💬 شحن</a>
     </div>
-
     <div class="plan-card">
       <div class="plan-info">
-        <h3>بطاقة 10$ دولار</h3>
-        <p>متجر أبل الأمريكي</p>
-        <div class="plan-price">15,000 د.ع</div>
+        <h3>جواهر Free Fire</h3>
+        <p>شحن فوري لحسابات فري فاير</p>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20بطاقة%20أبل%2010%24">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20جواهر%20فري%20فاير">💬 شحن</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>كوينز eFootball</h3>
+        <p>شحن كوينز إي فوتبول المباشر</p>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20كوينز%20eFootball">💬 شحن</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>ماس Yalla Ludo</h3>
+        <p>شحن الماس وذهب ييلا لودو</p>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20يلا%20لودو">💬 شحن</a>
+    </div>
+  </div>
+</div>
+
+<!-- SUB VIEW: CARDS -->
+<div id="cards-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>بطاقات Google Play / Apple</h3>
+        <p>كروت شحن متجر المتاجر الأمريكية والمحلية</p>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20بطاقة%20جوجل%20بلاي/أبل">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>بطاقات Steam / PlayStation / Xbox</h3>
+        <p>أكواد شحن الحسابات والألعاب</p>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20بطاقات%20ألعاب%20بلايستيشن/ستيم/إكس%20بوكس">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<!-- SUB VIEW: WALLETS -->
+<div id="wallets-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>المحافظ والخدمات الإلكترونية</h3>
+        <p>شحن وسحب وتحويل عبر المحافظ المتاحة</p>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20المحافظ%20الإلكترونية">💬 تواصل</a>
     </div>
   </div>
 </div>
@@ -403,20 +518,10 @@ body {
   <div class="plans-list">
     <div class="plan-card">
       <div class="plan-info">
-        <h3>دعم انستغرام</h3>
-        <p>متابعين وتفاعل الحسابات</p>
-        <div class="plan-price">5,000 د.ع</div>
+        <h3>دعم حسابات السوشيال ميديا</h3>
+        <p>متابعين، مشاهدات، لايكات وتفاعل لكافة المنصات</p>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20دعم%20انستغرام">💬 طلب</a>
-    </div>
-
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>دعم تيك توك</h3>
-        <p>زيادة مشاهدات وإكسبلور</p>
-        <div class="plan-price">5,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20دعم%20تيك%20توك">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20استفسار%20عن%20خدمات%20السوشيال%20ميديا">💬 طلب</a>
     </div>
   </div>
 </div>
@@ -428,8 +533,8 @@ body {
     <span>الرئيسية</span>
   </button>
   <a href="https://wa.me/9647760361911" target="_blank" class="tab-btn">
-    <span style="font-size:18px;">💬</span>
-    <span>الدعم المباشر</span>
+    <span style="font-size:18px;">🟢</span>
+    <span>طلب مباشر</span>
   </a>
 </nav>
 
@@ -439,7 +544,7 @@ function openPage(pageId, title) {
   document.getElementById(pageId).classList.add('active');
   
   document.getElementById('header-title').textContent = title;
-  document.getElementById('header-subtitle').textContent = 'اختر الباقة المناسبة للطلب';
+  document.getElementById('header-subtitle').textContent = 'اختر الخدمة للطلب عبر الواتساب';
   document.getElementById('backBtn').style.display = 'block';
   window.scrollTo(0, 0);
 }
@@ -449,7 +554,7 @@ function showHome() {
   document.getElementById('home-view').classList.add('active');
   
   document.getElementById('header-title').textContent = 'فاطمة ستور';
-  document.getElementById('header-subtitle').textContent = 'اضغط على التطبيق لعرض الباقات';
+  document.getElementById('header-subtitle').textContent = 'اختر القسم للتنقل بين الخدمات';
   document.getElementById('backBtn').style.display = 'none';
   window.scrollTo(0, 0);
 }
