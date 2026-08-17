@@ -314,6 +314,15 @@ body {
   <div class="grid-title">الأقسام الرئيسية</div>
 
   <main class="products-grid">
+    <div class="app-card" onclick="openPage('net-list-view', 'اشتراكات الإنترنت', 'اختر الشركة للتجديد')">
+      <div>
+        <div class="icon-box">🌐</div>
+        <h3 class="app-title">الإنترنت</h3>
+        <p class="app-desc">الوطني، سوبر سيل، الجزيرة، اسياسيل...</p>
+      </div>
+      <div class="action-label">عرض الشبكات ←</div>
+    </div>
+
     <div class="app-card" onclick="openPage('iptv-list-view', 'اشتراكات IPTV', 'اختر السيرفر أو التطبيق')">
       <div>
         <div class="icon-box">📺</div>
@@ -327,9 +336,18 @@ body {
       <div>
         <div class="icon-box">🎮</div>
         <h3 class="app-title">شحن الألعاب</h3>
-        <p class="app-desc">PUBG, Free Fire, eFootball, Yalla Ludo...</p>
+        <p class="app-desc">PUBG, Yalla Ludo, Free Fire, Roblox...</p>
       </div>
       <div class="action-label">عرض الألعاب ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('transfers-list-view', 'التحويلات المالية', 'اختر وسيلة التحويل')">
+      <div>
+        <div class="icon-box">💸</div>
+        <h3 class="app-title">التحويلات المالية</h3>
+        <p class="app-desc">زين كاش، ماستر الرافدين، آسيا بي، فاست بي...</p>
+      </div>
+      <div class="action-label">عرض الطرق ←</div>
     </div>
 
     <div class="app-card" onclick="openPage('cards-list-view', 'البطاقات الإلكترونية', 'اختر نوع البطاقات')">
@@ -341,13 +359,82 @@ body {
       <div class="action-label">عرض البطاقات ←</div>
     </div>
 
-    <div class="app-card" onclick="openPage('social-view', 'السوشيال ميديا', 'باقت الخدمات والتفاعل')">
+    <div class="app-card" onclick="openPage('social-list-view', 'خدمات السوشيال ميديا', 'اختر المنصة المطلوب تمويلها')">
       <div>
         <div class="icon-box">📣</div>
         <h3 class="app-title">السوشيال ميديا</h3>
-        <p class="app-desc">دعم وتفاعل لجميع المنصات.</p>
+        <p class="app-desc">فيس بوك، انستكرام، تيك توك، وغيرها...</p>
       </div>
-      <div class="action-label">عرض الباقات ←</div>
+      <div class="action-label">عرض المنصات ←</div>
+    </div>
+  </main>
+</div>
+
+<!-- LEVEL 2: INTERNET NETWORKS LIST VIEW -->
+<div id="net-list-view" class="view">
+  <div class="grid-title">اختر شبكة الإنترنت</div>
+  <main class="products-grid">
+    <div class="app-card" onclick="openPage('net-watani-view', 'الوطني FTTH', 'تجديد اشتراك شبكة الوطني')">
+      <div>
+        <div class="icon-box">🌐</div>
+        <h3 class="app-title">الوطني</h3>
+        <p class="app-desc">تجديد وشحن اشتراكات الوطني.</p>
+      </div>
+      <div class="action-label">عرض الاشتراكات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('net-supersell-view', 'سوبر سيل Supercell', 'تجديد اشتراك سوبر سيل')">
+      <div>
+        <div class="icon-box">⚡</div>
+        <h3 class="app-title">سوبر سيل</h3>
+        <p class="app-desc">تجديد اشتراك الكابل والضوئي.</p>
+      </div>
+      <div class="action-label">عرض الاشتراكات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('net-jazeera-view', 'الجزيرة Telecom', 'تجديد اشتراك شبكة الجزيرة')">
+      <div>
+        <div class="icon-box">📡</div>
+        <h3 class="app-title">الجزيرة</h3>
+        <p class="app-desc">شحن باقات شبكة الجزيرة.</p>
+      </div>
+      <div class="action-label">عرض الاشتراكات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('net-hernz-view', 'هرنز Hernz', 'تجديد اشتراك هرنز')">
+      <div>
+        <div class="icon-box">🚀</div>
+        <h3 class="app-title">هرنز</h3>
+        <p class="app-desc">تجديد سريعة لشبكات هرنز.</p>
+      </div>
+      <div class="action-label">عرض الاشتراكات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('net-rahma-view', 'الرحمة Telecom', 'تجديد اشتراك شبكة الرحمة')">
+      <div>
+        <div class="icon-box">📶</div>
+        <h3 class="app-title">الرحمة</h3>
+        <p class="app-desc">شحن اشتراكات شبكة الرحمة.</p>
+      </div>
+      <div class="action-label">عرض الاشتراكات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('net-asiacell-view', 'كارتات اسياسيل', 'كروت شحن رصيد وإنترنت')">
+      <div>
+        <div class="icon-box">📱</div>
+        <h3 class="app-title">اسياسيل</h3>
+        <p class="app-desc">كروت رصيد وباقات إنترنت اسياسيل.</p>
+      </div>
+      <div class="action-label">عرض البطاقات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('net-atheer-view', 'كارتات أثير (زين)', 'كروت شحن رصيد وإنترنت')">
+      <div>
+        <div class="icon-box">📲</div>
+        <h3 class="app-title">أثير (زين)</h3>
+        <p class="app-desc">كروت رصيد وباقات إنترنت زين.</p>
+      </div>
+      <div class="action-label">عرض البطاقات ←</div>
     </div>
   </main>
 </div>
@@ -374,15 +461,6 @@ body {
       <div class="action-label">عرض الأسعار ←</div>
     </div>
 
-    <div class="app-card" onclick="openPage('tod-details-view', 'اشتراك TOD', 'الباقات الرسمية')">
-      <div>
-        <div class="icon-box">⚽</div>
-        <h3 class="app-title">TOD</h3>
-        <p class="app-desc">البث المباشر للبطولات الرياضية.</p>
-      </div>
-      <div class="action-label">عرض الأسعار ←</div>
-    </div>
-
     <div class="app-card" onclick="openPage('tiger-details-view', 'سيرفر TIGER', 'اختر مدة الاشتراك')">
       <div>
         <div class="icon-box">🐯</div>
@@ -391,18 +469,36 @@ body {
       </div>
       <div class="action-label">عرض الأسعار ←</div>
     </div>
+
+    <div class="app-card" onclick="openPage('tod-details-view', 'اشتراك TOD', 'اختر نوع الاشتراك')">
+      <div>
+        <div class="icon-box">⚽</div>
+        <h3 class="app-title">TOD</h3>
+        <p class="app-desc">البث المباشر للبطولات الرياضية.</p>
+      </div>
+      <div class="action-label">عرض الأسعار ←</div>
+    </div>
   </main>
 </div>
 
 <!-- LEVEL 2: GAMES LIST VIEW -->
 <div id="games-list-view" class="view">
-  <div class="grid-title">اختر اللعبة</div>
+  <div class="grid-title">اختر اللعبة للشحن</div>
   <main class="products-grid">
     <div class="app-card" onclick="openPage('pubg-details-view', 'شدات ببجي PUBG', 'اختر فئة الشحن')">
       <div>
         <div class="icon-box">🔫</div>
-        <h3 class="app-title">PUBG Mobile</h3>
-        <p class="app-desc">شحن فوري عن طريق ID.</p>
+        <h3 class="app-title">ببجي Mobile</h3>
+        <p class="app-desc">شحن شدات UC فورية عبر ID.</p>
+      </div>
+      <div class="action-label">عرض الفئات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('yalla-details-view', 'ماس يلا لودو', 'اختر فئة الماس أو الماسية')">
+      <div>
+        <div class="icon-box">🎲</div>
+        <h3 class="app-title">يلا لودو</h3>
+        <p class="app-desc">شحن الماس وكولد وشحنات مخصصة.</p>
       </div>
       <div class="action-label">عرض الفئات ←</div>
     </div>
@@ -410,10 +506,157 @@ body {
     <div class="app-card" onclick="openPage('freefire-details-view', 'جواهر Free Fire', 'اختر فئة الشحن')">
       <div>
         <div class="icon-box">💎</div>
-        <h3 class="app-title">Free Fire</h3>
-        <p class="app-desc">شحن جواهر مباشر لحسابك.</p>
+        <h3 class="app-title">فري فاير</h3>
+        <p class="app-desc">شحن جواهر مباشر عن طريق ID.</p>
       </div>
       <div class="action-label">عرض الفئات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('roblox-details-view', 'روبلوكس Roblox', 'اختر فئة Robux')">
+      <div>
+        <div class="icon-box">🧱</div>
+        <h3 class="app-title">روبلوكس</h3>
+        <p class="app-desc">بطاقات وشحن رصيد Robux.</p>
+      </div>
+      <div class="action-label">عرض الفئات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('pes-details-view', 'بيس eFootball', 'اختر فئة الكوينز')">
+      <div>
+        <div class="icon-box">⚽</div>
+        <h3 class="app-title">بيس eFootball</h3>
+        <p class="app-desc">شحن كوينز Coins بيس المباشر.</p>
+      </div>
+      <div class="action-label">عرض الفئات ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('mc-details-view', 'ماين كرافت Minecraft', 'حسابات وأكواد ماين كرافت')">
+      <div>
+        <div class="icon-box">⛏️</div>
+        <h3 class="app-title">ماين كرافت</h3>
+        <p class="app-desc">أكواد وشحن Minecoins وسيرفرات.</p>
+      </div>
+      <div class="action-label">عرض الفئات ←</div>
+    </div>
+  </main>
+</div>
+
+<!-- LEVEL 2: FINANCIAL TRANSFERS LIST VIEW -->
+<div id="transfers-list-view" class="view">
+  <div class="grid-title">وسائل التحويل المالي</div>
+  <main class="products-grid">
+    <div class="app-card" onclick="openPage('zaincash-details-view', 'زين كاش Zain Cash', 'تحويل وإيداع أموال')">
+      <div>
+        <div class="icon-box">📱</div>
+        <h3 class="app-title">زين كاش</h3>
+        <p class="app-desc">تحويل، إيداع وسحب مباشر.</p>
+      </div>
+      <div class="action-label">طلب تحويل ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('rafidain-details-view', 'ماستر الرافدين', 'تحويل وإيداع ماستر كارد')">
+      <div>
+        <div class="icon-box">💳</div>
+        <h3 class="app-title">ماستر الرافدين</h3>
+        <p class="app-desc">شحن وتعبئة بطاقات الرافدين.</p>
+      </div>
+      <div class="action-label">طلب تحويل ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('asiapay-details-view', 'آسيا بي AsiaPay', 'تحويل وإيداع أموال')">
+      <div>
+        <div class="icon-box">📲</div>
+        <h3 class="app-title">آسيا بي</h3>
+        <p class="app-desc">خدمات محفظة آسيا بي المالية.</p>
+      </div>
+      <div class="action-label">طلب تحويل ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('fastpay-details-view', 'فاست بي FastPay', 'تحويل وإيداع أموال')">
+      <div>
+        <div class="icon-box">⚡</div>
+        <h3 class="app-title">فاست بي</h3>
+        <p class="app-desc">تحويلات سريعة فورية عبر المحفظة.</p>
+      </div>
+      <div class="action-label">طلب تحويل ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('asiatransfer-details-view', 'تحويل رصيد آسيا', 'تحويل رصيد اسياسيل مباشر')">
+      <div>
+        <div class="icon-box">🔄</div>
+        <h3 class="app-title">تحويل رصيد آسيا</h3>
+        <p class="app-desc">تحويل رصيد اسياسيل مباشر بين الخطوط.</p>
+      </div>
+      <div class="action-label">طلب تحويل ←</div>
+    </div>
+  </main>
+</div>
+
+<!-- LEVEL 2: SOCIAL MEDIA LIST VIEW -->
+<div id="social-list-view" class="view">
+  <div class="grid-title">منصات السوشيال ميديا</div>
+  <main class="products-grid">
+    <div class="app-card" onclick="openPage('fb-details-view', 'خدمات فيس بوك', 'متابعين، لايكات، مشاهدات')">
+      <div>
+        <div class="icon-box">📘</div>
+        <h3 class="app-title">فيس بوك</h3>
+        <p class="app-desc">دعم البيجات والحسابات الشخصية.</p>
+      </div>
+      <div class="action-label">عرض الخدمة ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('insta-details-view', 'خدمات انستكرام', 'متابعين، لايكات، ريلز')">
+      <div>
+        <div class="icon-box">📸</div>
+        <h3 class="app-title">انستكرام</h3>
+        <p class="app-desc">زيادة متابعين وتفاعل ريلز.</p>
+      </div>
+      <div class="action-label">عرض الخدمة ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('tele-details-view', 'خدمات تليكرام', 'أعضاء قنوات ومشاهدات')">
+      <div>
+        <div class="icon-box">✈️</div>
+        <h3 class="app-title">تليكرام</h3>
+        <p class="app-desc">تمويل أعضاء القنوات والجروبات.</p>
+      </div>
+      <div class="action-label">عرض الخدمة ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('tiktok-details-view', 'خدمات تيك توك', 'متابعين، لايكات، اكسبلور')">
+      <div>
+        <div class="icon-box">🎵</div>
+        <h3 class="app-title">تيك توك</h3>
+        <p class="app-desc">رفع التفاعل ودعم الحسابات.</p>
+      </div>
+      <div class="action-label">عرض الخدمة ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('wa-details-view', 'خدمات واتساب', 'بوتات وخدمات أرقام')">
+      <div>
+        <div class="icon-box">💬</div>
+        <h3 class="app-title">واتساب</h3>
+        <p class="app-desc">خدمات الأعمال والتواصل المباشر.</p>
+      </div>
+      <div class="action-label">عرض الخدمة ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('snap-details-view', 'خدمات سناب جات', 'متابعين ومشاهدات ستيوريات')">
+      <div>
+        <div class="icon-box">👻</div>
+        <h3 class="app-title">سناب جات</h3>
+        <p class="app-desc">زيادة مشاهدات المين والمستكشف.</p>
+      </div>
+      <div class="action-label">عرض الخدمة ←</div>
+    </div>
+
+    <div class="app-card" onclick="openPage('yt-details-view', 'خدمات يوتيوب', 'مشتركين، ساعات، لايكات')">
+      <div>
+        <div class="icon-box">▶️</div>
+        <h3 class="app-title">يوتيوب</h3>
+        <p class="app-desc">تحقيق شروط الربح وتكبير القنوات.</p>
+      </div>
+      <div class="action-label">عرض الخدمة ←</div>
     </div>
   </main>
 </div>
@@ -442,81 +685,81 @@ body {
   </main>
 </div>
 
-<!-- LEVEL 3: DETAILS & PRICES VIEWS -->
+<!-- LEVEL 3: TRANSFERS DETAILS VIEWS -->
 
-<!-- MAX TV DETAILS -->
-<div id="max-details-view" class="view">
+<div id="zaincash-details-view" class="view">
   <div class="plans-list">
     <div class="plan-card">
       <div class="plan-info">
-        <h3>اشتراك MAX (شهر واحد)</h3>
-        <p>سيرفر ثابت بدقة عالية</p>
-        <div class="plan-price">5,000 د.ع</div>
+        <h3>تحويل / إيداع زين كاش</h3>
+        <p>إيداع وسحب وتعبئة محافظ زين كاش</p>
+        <div class="plan-price">حسب المبلغ</div>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20اشتراك%20MAX%20TV%20(شهر)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>اشتراك MAX (3 أشهر)</h3>
-        <p>توفير ومتابعة مستمرة</p>
-        <div class="plan-price">12,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20اشتراك%20MAX%20TV%20(3%20أشهر)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>اشتراك MAX (سنة كاملة)</h3>
-        <p>العرض الأقوى للعام الكامل</p>
-        <div class="plan-price">25,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20اشتراك%20MAX%20TV%20(سنة)">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل/إيداع%20عبر%20زين%20كاش">💬 طلب</a>
     </div>
   </div>
 </div>
 
-<!-- BEST 4K DETAILS -->
-<div id="best-details-view" class="view">
+<div id="rafidain-details-view" class="view">
   <div class="plans-list">
     <div class="plan-card">
       <div class="plan-info">
-        <h3>BEST 4K (شهر واحد)</h3>
-        <p>باقة الجودة المطلقة</p>
-        <div class="plan-price">5,000 د.ع</div>
+        <h3>تحويل ماستر الرافدين</h3>
+        <p>إيداع وشحن بطاقات ماستر كارد الرافدين</p>
+        <div class="plan-price">حسب المبلغ</div>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(شهر)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>BEST 4K (سنة كاملة)</h3>
-        <p>سيرفر أسطوري للمباريات</p>
-        <div class="plan-price">30,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(سنة)">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل/شحن%20ماستر%20الرافدين">💬 طلب</a>
     </div>
   </div>
 </div>
 
-<!-- TOD DETAILS -->
-<div id="tod-details-view" class="view">
+<div id="asiapay-details-view" class="view">
   <div class="plans-list">
     <div class="plan-card">
       <div class="plan-info">
-        <h3>اشتراك TOD شهري</h3>
-        <p>حساب رسمي ومضمون</p>
-        <div class="plan-price">10,000 د.ع</div>
+        <h3>تحويل محفظة آسيا بي (AsiaPay)</h3>
+        <p>إرسال واستلام عبر محفظة آسيا بي</p>
+        <div class="plan-price">حسب المبلغ</div>
       </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20اشتراك%20TOD%20شهري">💬 طلب</a>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل/إيداع%20عبر%20آسيا%20بي">💬 طلب</a>
     </div>
   </div>
 </div>
 
-<!-- PUBG DETAILS -->
+<div id="fastpay-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>تحويل فاست بي (FastPay)</h3>
+        <p>إيداع وشحن فوري لمحفظة فاست بي</p>
+        <div class="plan-price">حسب المبلغ</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل/إيداع%20عبر%20فاست%20بي">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="asiatransfer-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>تحويل رصيد اسياسيل</h3>
+        <p>تحويل رصيد أثير/آسيا مباشر إلى رقمك</p>
+        <div class="plan-price">حسب المبلغ</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل%20رصيد%20اسياسيل">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 3: GAMES DETAILS VIEWS -->
+
 <div id="pubg-details-view" class="view">
   <div class="plans-list">
     <div class="plan-card">
       <div class="plan-info">
         <h3>60 UC (شدة)</h3>
-        <p>شحن أوتوماتيكي سريع</p>
+        <p>شحن أوتوماتيكي سريع عن طريق ID</p>
         <div class="plan-price">2,000 د.ع</div>
       </div>
       <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20شدات%20ببجي%2060UC">💬 طلب</a>
@@ -540,7 +783,401 @@ body {
   </div>
 </div>
 
-<!-- APPLE DETAILS -->
+<div id="yalla-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>شحن الماس يلا لودو</h3>
+        <p>شحن فوري ومباشر عن طريق ID</p>
+        <div class="plan-price">حسب الفئة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20ماس%20يلا%20لودو">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="freefire-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>شحن جواهر فري فاير</h3>
+        <p>100 حتى 2100+ جوهر عبر الـ ID</p>
+        <div class="plan-price">حسب الفئة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20جواهر%20فري%20فاير">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="roblox-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>شحن روبلكس (Robux)</h3>
+        <p>بطاقات هدايا وأكواد شحن روبلوكس</p>
+        <div class="plan-price">حسب الفئة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20روبلوكس%20Robux">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="pes-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>كوينز بيس (eFootball Coins)</h3>
+        <p>شحن كوينز رسمي ومباشر للحساب</p>
+        <div class="plan-price">حسب الفئة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20كوينز%20بيس%20eFootball">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="mc-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>ماين كرافت Minecraft</h3>
+        <p>أكواد رسمية + Minecoins لشراء المودات</p>
+        <div class="plan-price">حسب الفئة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20منتجات%20ماين%20كرافت">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 3: INTERNET DETAILS VIEWS -->
+
+<div id="net-watani-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>تجديد اشتراك الوطني</h3>
+        <p>يرجى إرسال اسم المستخدم أو رقم الاشتراك</p>
+        <div class="plan-price">حسب الباقة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20الوطني">💬 تجديد</a>
+    </div>
+  </div>
+</div>
+
+<div id="net-supersell-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>تجديد اشتراك سوبر سيل</h3>
+        <p>يرجى إرسال اسم المستخدم أو كارت التجديد</p>
+        <div class="plan-price">حسب الباقة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20سوبر%20سيل">💬 تجديد</a>
+    </div>
+  </div>
+</div>
+
+<div id="net-jazeera-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>تجديد اشتراك الجزيرة</h3>
+        <p>يرجى إرسال بيانات الاشتراك لتجديده فوراً</p>
+        <div class="plan-price">حسب الباقة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20الجزيرة">💬 تجديد</a>
+    </div>
+  </div>
+</div>
+
+<div id="net-hernz-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>تجديد اشتراك هرنز</h3>
+        <p>يرجى إرسال اسم المستخدم الخاص بالشبكة</p>
+        <div class="plan-price">حسب الباقة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20هرنز">💬 تجديد</a>
+    </div>
+  </div>
+</div>
+
+<div id="net-rahma-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>تجديد اشتراك الرحمة</h3>
+        <p>إرسال اسم اليوزر للتجديد المباشر</p>
+        <div class="plan-price">حسب الباقة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20الرحمة">💬 تجديد</a>
+    </div>
+  </div>
+</div>
+
+<div id="net-asiacell-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>كارتات وتعبئة رصيد اسياسيل</h3>
+        <p>كروت شحن رصيد وباقات إنترنت مختلفة</p>
+        <div class="plan-price">حسب الفئة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شراء%20كارت%20اسياسيل">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="net-atheer-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>كارتات وتعبئة رصيد أثير (زين)</h3>
+        <p>كروت شحن رصيد وباقات إنترنت مختلفة</p>
+        <div class="plan-price">حسب الفئة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شراء%20كارت%20أثير">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 3: IPTV DETAILS -->
+
+<div id="max-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>MAX - شهر واحد</h3>
+        <p>اشتراك سيرفر MAX لمدة 1 شهر</p>
+        <div class="plan-price">5,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20(شهر%20بـ%205000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>MAX - 3 أشهر</h3>
+        <p>اشتراك سيرفر MAX لمدة 3 أشهر</p>
+        <div class="plan-price">10,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20(3%20أشهر%20بـ%2010000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>MAX - 6 أشهر</h3>
+        <p>اشتراك سيرفر MAX لمدة 6 أشهر</p>
+        <div class="plan-price">15,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20(6%20أشهر%20بـ%2015000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>MAX - سنة كاملة</h3>
+        <p>اشتراك سيرفر MAX لمدة سنة</p>
+        <div class="plan-price">25,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20(سنة%20بـ%2025000)">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="best-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>BEST 4K - شهر واحد</h3>
+        <p>اشتراك سيرفر BEST لمدة 1 شهر</p>
+        <div class="plan-price">4,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(شهر%20بـ%204000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>BEST 4K - 3 أشهر</h3>
+        <p>اشتراك سيرفر BEST لمدة 3 أشهر</p>
+        <div class="plan-price">9,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(3%20أشهر%20بـ%209000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>BEST 4K - 6 أشهر</h3>
+        <p>اشتراك سيرفر BEST لمدة 6 أشهر</p>
+        <div class="plan-price">13,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(6%20أشهر%20بـ%2013000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>BEST 4K - سنة كاملة</h3>
+        <p>اشتراك سيرفر BEST لمدة سنة</p>
+        <div class="plan-price">20,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(سنة%20بـ%2020000)">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="tiger-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>TIGER - شهر واحد</h3>
+        <p>اشتراك سيرفر TIGER لمدة 1 شهر</p>
+        <div class="plan-price">3,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TIGER%20(شهر%20بـ%203000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>TIGER - 3 أشهر</h3>
+        <p>اشتراك سيرفر TIGER لمدة 3 أشهر</p>
+        <div class="plan-price">7,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TIGER%20(3%20أشهر%20بـ%207000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>TIGER - 6 أشهر</h3>
+        <p>اشتراك سيرفر TIGER لمدة 6 أشهر</p>
+        <div class="plan-price">13,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TIGER%20(6%20أشهر%20بـ%2013000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>TIGER - سنة كاملة</h3>
+        <p>اشتراك سيرفر TIGER لمدة سنة</p>
+        <div class="plan-price">18,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TIGER%20(سنة%20بـ%2018000)">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="tod-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>TOD - موبايل فقط</h3>
+        <p>باقة الأجهزة المحمولة</p>
+        <div class="plan-price">15,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TOD%20(موبايل%20فقط%20بـ%2015000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>TOD - شاشة فقط</h3>
+        <p>باقة الشاشات والتلفزيون الذكي</p>
+        <div class="plan-price">20,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TOD%20(شاشة%20فقط%20بـ%2020000)">💬 طلب</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>TOD - شاشة وموبايل</h3>
+        <p>الباقة الشاملة للشاشة والموبايل معاً</p>
+        <div class="plan-price">25,000 د.ع</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TOD%20(شاشة%20وموبايل%20بـ%2025000)">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 3: SOCIAL DETAILS VIEWS -->
+
+<div id="fb-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>تمويل صفحة / حساب فيس بوك</h3>
+        <p>متابعين، اعجابات بيج، تفاعل منشورات</p>
+        <div class="plan-price">حسب الطلب</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20فيس%20بوك">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="insta-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>خدمات انستكرام</h3>
+        <p>متابعين حقيقيين، مشاهدات ريلز، لايكات</p>
+        <div class="plan-price">حسب الطلب</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20انستكرام">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="tele-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>خدمات تليكرام</h3>
+        <p>أعضاء قنوات وجروبات + مشاهدات منشورات</p>
+        <div class="plan-price">حسب الطلب</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20تليكرام">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="tiktok-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>خدمات تيك توك</h3>
+        <p>متابعين، لايكات، أكسبلور ودعم البث المباشر</p>
+        <div class="plan-price">حسب الطلب</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20تيك%20توك">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="wa-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>خدمات واتساب</h3>
+        <p>بوتات رد آلي وتفعيل أرقام للواتساب</p>
+        <div class="plan-price">حسب الطلب</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20واتساب">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="snap-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>خدمات سناب جات</h3>
+        <p>متابعين ومشاهدات ستوري وباقة المستكشف</p>
+        <div class="plan-price">حسب الطلب</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20سناب%20جات">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<div id="yt-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>خدمات يوتيوب</h3>
+        <p>مشتركين، ساعات مشاهدة وتفعيل تحقيق الربح</p>
+        <div class="plan-price">حسب الطلب</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20يوتيوب">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
+<!-- LEVEL 3: OTHER CARDS DETAILS -->
+
 <div id="apple-details-view" class="view">
   <div class="plans-list">
     <div class="plan-card">
@@ -562,6 +1199,19 @@ body {
   </div>
 </div>
 
+<div id="google-details-view" class="view">
+  <div class="plans-list">
+    <div class="plan-card">
+      <div class="plan-info">
+        <h3>بطاقات Google Play</h3>
+        <p>أكواد شحن مباشر بمختلف الفئات</p>
+        <div class="plan-price">حسب الفئة</div>
+      </div>
+      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شراء%20بطاقة%20قوقل%20بلاي">💬 طلب</a>
+    </div>
+  </div>
+</div>
+
 <!-- Bottom Navigation Bar -->
 <nav class="bottom-bar">
   <button class="tab-btn active" onclick="goHome()">
@@ -575,7 +1225,6 @@ body {
 </nav>
 
 <script>
-// Navigation stack system for smooth multi-level navigation
 let historyStack = ['home-view'];
 let headerTitles = { 'home-view': { title: 'فاطمة ستور', sub: 'اختر القسم للتنقل' } };
 
@@ -594,7 +1243,7 @@ function openPage(pageId, title, sub) {
 
 function goBack() {
   if (historyStack.length > 1) {
-    historyStack.pop(); // Remove current page
+    historyStack.pop();
     let previousPageId = historyStack[historyStack.length - 1];
 
     document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
