@@ -1,1276 +1,1044 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>فاطمة ستور | Fatima Store</title>
+<!-- =========================================================
+     🛒 سلة مشتريات محسّنة - التاج الرقمي
+     ضع هذا الجزء قبل </body>
+========================================================= -->
+
 <style>
-:root {
-  --bg-dark: #07090e;
-  --surface-1: #0f131f;
-  --surface-2: #161c2e;
-  --accent-purple: #9d4edf;
-  --accent-pink: #ff2a85;
-  --accent-green: #10b981;
-  --accent-cyan: #06b6d4;
-  --accent-amber: #f59e0b;
-  --text-main: #f8fafc;
-  --text-sub: #94a3b8;
-  --border-glow: rgba(157, 78, 223, 0.25);
+
+/* =========================
+   CART BUTTON
+========================= */
+
+.cart-float{
+    position:fixed;
+    right:12px;
+    bottom:170px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#9147ff,#ff2d88);
+    color:#fff;
+    font-size:25px;
+    z-index:1600;
+    box-shadow:0 10px 35px #0009;
+    border:2px solid #ffffff22;
+    cursor:pointer;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  -webkit-tap-highlight-color: transparent;
+.cart-count{
+    position:absolute;
+    top:-5px;
+    left:-4px;
+    min-width:22px;
+    height:22px;
+    padding:0 5px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#ef4444;
+    color:#fff;
+    font-size:10px;
+    font-weight:1000;
+    border:2px solid #060810;
 }
 
-body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  padding-bottom: 90px;
-  max-width: 480px;
-  margin: 0 auto;
-  min-height: 100vh;
-  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+/* =========================
+   CART OVERLAY
+========================= */
+
+.cart-overlay{
+    position:fixed;
+    inset:0;
+    background:#0009;
+    backdrop-filter:blur(5px);
+    z-index:2000;
+    display:none;
 }
 
-/* Header */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(7, 9, 14, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 14px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.cart-overlay.show{
+    display:block;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+/* =========================
+   CART PANEL
+========================= */
+
+.cart-panel{
+    position:fixed;
+    top:0;
+    right:0;
+    width:min(420px,100%);
+    height:100vh;
+    background:#0b0f19;
+    border-left:1px solid #ffffff15;
+    z-index:2100;
+    transform:translateX(105%);
+    transition:.3s ease;
+    display:flex;
+    flex-direction:column;
+    box-shadow:-15px 0 50px #0009;
 }
 
-.logo-badge {
-  width: 42px;
-  height: 42px;
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-  font-size: 20px;
-  color: #fff;
-  box-shadow: 0 0 20px rgba(255, 42, 133, 0.4);
+.cart-panel.show{
+    transform:translateX(0);
 }
 
-.brand-text h1 {
-  font-size: 16px;
-  font-weight: 800;
+.cart-header{
+    min-height:70px;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #ffffff12;
+    background:#0e131f;
 }
 
-.brand-text p {
-  font-size: 11px;
-  color: var(--text-sub);
+.cart-title{
+    display:flex;
+    align-items:center;
+    gap:9px;
 }
 
-.back-btn {
-  display: none;
-  background: var(--surface-2);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
+.cart-title h2{
+    font-size:18px;
+    font-weight:1000;
 }
 
-/* Dynamic View System */
-.view {
-  display: none;
-  animation: fadeIn 0.25s ease-in-out;
+.cart-close{
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:12px;
+    background:#ffffff0d;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
 }
 
-.view.active {
-  display: block;
+/* =========================
+   CART CONTENT
+========================= */
+
+.cart-body{
+    flex:1;
+    overflow-y:auto;
+    padding:14px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+.cart-empty{
+    min-height:300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#9aa6ba;
 }
 
-/* Trial & Speed Banners */
-.trial-card {
-  margin: 16px 16px 8px;
-  padding: 16px 20px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(255, 42, 133, 0.15));
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.cart-empty-icon{
+    font-size:55px;
+    margin-bottom:15px;
 }
 
-.trial-text h2 { font-size: 15px; font-weight: 800; color: #fbbf24; }
-.trial-text p { font-size: 11px; color: #cbd5e1; margin-top: 2px; }
-
-.trial-btn {
-  background: var(--accent-amber);
-  color: #000;
-  padding: 8px 14px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 900;
-  text-decoration: none;
-  white-space: nowrap;
+.cart-empty strong{
+    color:#fff;
+    font-size:16px;
+    margin-bottom:6px;
 }
 
-.speed-test-banner {
-  margin: 0 16px 16px;
-  padding: 12px 18px;
-  border-radius: 16px;
-  background: var(--surface-1);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.cart-empty span{
+    font-size:10px;
 }
 
-.speed-text { font-size: 12px; font-weight: 700; color: var(--accent-cyan); display: flex; align-items: center; gap: 6px; }
+/* =========================
+   CART ITEM
+========================= */
 
-.speed-btn {
-  background: rgba(6, 182, 212, 0.15);
-  border: 1px solid rgba(6, 182, 212, 0.4);
-  color: #22d3ee;
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 800;
-  text-decoration: none;
+.cart-item{
+    padding:13px;
+    margin-bottom:10px;
+    border-radius:17px;
+    background:linear-gradient(145deg,#151b29,#0e131e);
+    border:1px solid #ffffff10;
 }
 
-/* Grid & List Styles */
-.grid-title {
-  padding: 0 20px 12px;
-  font-size: 15px;
-  font-weight: 800;
+.cart-item-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
 }
 
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  padding: 0 16px;
+.cart-item-info{
+    flex:1;
 }
 
-.app-card {
-  background: var(--surface-1);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.cart-item-name{
+    font-size:13px;
+    font-weight:1000;
+    color:#fff;
+    line-height:1.5;
 }
 
-.app-card:hover {
-  border-color: var(--border-glow);
-  transform: translateY(-2px);
+.cart-item-price{
+    display:block;
+    margin-top:4px;
+    color:#ffd166;
+    font-size:11px;
+    font-weight:900;
 }
 
-.icon-box {
-  width: 48px;
-  height: 48px;
-  background: var(--surface-2);
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-  margin-bottom: 12px;
+.cart-delete{
+    width:34px;
+    height:34px;
+    flex-shrink:0;
+    border:0;
+    border-radius:10px;
+    background:#ef44441a;
+    color:#ff6b6b;
+    cursor:pointer;
+    font-size:16px;
 }
 
-.app-title { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
-.app-desc { font-size: 11px; color: var(--text-sub); line-height: 1.4; margin-bottom: 12px; }
+/* =========================
+   QUANTITY
+========================= */
 
-.action-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--accent-cyan);
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.cart-item-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:11px;
 }
 
-/* Sub-page Cards System */
-.plans-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:7px;
 }
 
-.plan-card {
-  background: var(--surface-1);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.quantity button{
+    width:30px;
+    height:30px;
+    border:1px solid #ffffff15;
+    border-radius:9px;
+    background:#ffffff0d;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
 }
 
-.plan-info h3 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
-.plan-info p { font-size: 12px; color: var(--text-sub); }
-.plan-price { font-size: 15px; font-weight: 900; color: #6ee7b7; margin-top: 4px; }
-
-.wa-buy-btn {
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: #fff;
-  border-radius: 12px;
-  padding: 10px 16px;
-  font-size: 12px;
-  font-weight: 800;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.quantity span{
+    min-width:25px;
+    text-align:center;
+    font-size:12px;
+    font-weight:1000;
 }
 
-/* Bottom Nav */
-.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 480px;
-  background: rgba(15, 19, 31, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 0 16px;
-  z-index: 1000;
+.item-total{
+    font-size:13px;
+    font-weight:1000;
+    color:#6ee7b7;
 }
 
-.tab-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: var(--text-sub);
-  text-decoration: none;
-  font-size: 10px;
-  font-weight: 700;
-  background: none;
-  border: none;
-  cursor: pointer;
+/* =========================
+   CART FOOTER
+========================= */
+
+.cart-footer{
+    padding:14px;
+    background:#0e131f;
+    border-top:1px solid #ffffff12;
 }
 
-.tab-btn.active { color: var(--accent-purple); }
+.cart-total{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.cart-total span{
+    color:#9aa6ba;
+    font-size:11px;
+}
+
+.cart-total strong{
+    color:#ffd166;
+    font-size:19px;
+}
+
+.cart-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.cart-action{
+    min-height:45px;
+    border:0;
+    border-radius:13px;
+    color:#fff;
+    font-size:10px;
+    font-weight:1000;
+    cursor:pointer;
+}
+
+.clear-cart{
+    background:#ef44441a;
+    border:1px solid #ef444433;
+    color:#ff7777;
+}
+
+.checkout-cart{
+    background:linear-gradient(135deg,#20d879,#079653);
+}
+
+.cart-note{
+    text-align:center;
+    margin-top:9px;
+    color:#667085;
+    font-size:8px;
+    line-height:1.6;
+}
+
+/* =========================
+   ADD TO CART STATE
+========================= */
+
+.added-message{
+    position:fixed;
+    left:50%;
+    bottom:90px;
+    transform:translateX(-50%) translateY(20px);
+    padding:11px 16px;
+    border-radius:13px;
+    background:#151c29;
+    border:1px solid #16c78455;
+    color:#fff;
+    font-size:10px;
+    font-weight:900;
+    opacity:0;
+    pointer-events:none;
+    z-index:3000;
+    transition:.25s;
+    box-shadow:0 10px 30px #0008;
+}
+
+.added-message.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
 </style>
-</head>
-<body>
 
-<!-- Header -->
-<header class="header">
-  <div class="brand">
-    <div class="logo-badge">ف</div>
-    <div class="brand-text">
-      <h1 id="header-title">فاطمة ستور</h1>
-      <p id="header-subtitle">اختر القسم للتنقل</p>
-    </div>
-  </div>
-  <button class="back-btn" id="backBtn" onclick="goBack()">← العودة</button>
-</header>
 
-<!-- LEVEL 1: HOME VIEW -->
-<div id="home-view" class="view active">
-  <section class="trial-card">
-    <div class="trial-text">
-      <h2>🎁 تجربة الاشتراكات</h2>
-      <p>أجور التجربة 1,000 د.ع فقط</p>
-    </div>
-    <a class="trial-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب%20تجربة%20اشتراك%20(1000%20د.ع)">طلب تجربة</a>
-  </section>
+<!-- =========================
+     CART BUTTON
+========================= -->
 
-  <div class="speed-test-banner">
-    <div class="speed-text">⚡ فحص سرعة الإنترنت</div>
-    <a href="https://fast.com" target="_blank" class="speed-btn">افحص الآن ↗</a>
-  </div>
+<button
+    class="cart-float"
+    id="cartButton"
+    onclick="openCart()"
+    aria-label="سلة المشتريات">
 
-  <div class="grid-title">الأقسام الرئيسية</div>
+    🛒
 
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('net-list-view', 'اشتراكات الإنترنت', 'اختر الشركة للتجديد')">
-      <div>
-        <div class="icon-box">🌐</div>
-        <h3 class="app-title">الإنترنت</h3>
-        <p class="app-desc">الوطني، سوبر سيل، الجزيرة، اسياسيل...</p>
-      </div>
-      <div class="action-label">عرض الشبكات ←</div>
-    </div>
+    <span
+        class="cart-count"
+        id="cartCount">
+        0
+    </span>
 
-    <div class="app-card" onclick="openPage('iptv-list-view', 'اشتراكات IPTV', 'اختر السيرفر أو التطبيق')">
-      <div>
-        <div class="icon-box">📺</div>
-        <h3 class="app-title">اشتراكات IPTV</h3>
-        <p class="app-desc">MAX, BEST 4K, TIGER, TOD...</p>
-      </div>
-      <div class="action-label">عرض القائمة ←</div>
-    </div>
+</button>
 
-    <div class="app-card" onclick="openPage('games-list-view', 'شحن الألعاب', 'اختر اللعبة للشحن')">
-      <div>
-        <div class="icon-box">🎮</div>
-        <h3 class="app-title">شحن الألعاب</h3>
-        <p class="app-desc">PUBG, Yalla Ludo, Free Fire, Roblox...</p>
-      </div>
-      <div class="action-label">عرض الألعاب ←</div>
-    </div>
 
-    <div class="app-card" onclick="openPage('transfers-list-view', 'التحويلات المالية', 'اختر وسيلة التحويل')">
-      <div>
-        <div class="icon-box">💸</div>
-        <h3 class="app-title">التحويلات المالية</h3>
-        <p class="app-desc">زين كاش، ماستر الرافدين، آسيا بي، فاست بي...</p>
-      </div>
-      <div class="action-label">عرض الطرق ←</div>
-    </div>
+<!-- =========================
+     CART OVERLAY
+========================= -->
 
-    <div class="app-card" onclick="openPage('cards-list-view', 'البطاقات الإلكترونية', 'اختر نوع البطاقات')">
-      <div>
-        <div class="icon-box">💳</div>
-        <h3 class="app-title">البطاقات</h3>
-        <p class="app-desc">Google Play, Apple, Steam, PlayStation...</p>
-      </div>
-      <div class="action-label">عرض البطاقات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('social-list-view', 'خدمات السوشيال ميديا', 'اختر المنصة المطلوب تمويلها')">
-      <div>
-        <div class="icon-box">📣</div>
-        <h3 class="app-title">السوشيال ميديا</h3>
-        <p class="app-desc">فيس بوك، انستكرام، تيك توك، وغيرها...</p>
-      </div>
-      <div class="action-label">عرض المنصات ←</div>
-    </div>
-  </main>
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()">
 </div>
 
-<!-- LEVEL 2: INTERNET NETWORKS LIST VIEW -->
-<div id="net-list-view" class="view">
-  <div class="grid-title">اختر شبكة الإنترنت</div>
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('net-watani-view', 'الوطني FTTH', 'تجديد اشتراك شبكة الوطني')">
-      <div>
-        <div class="icon-box">🌐</div>
-        <h3 class="app-title">الوطني</h3>
-        <p class="app-desc">تجديد وشحن اشتراكات الوطني.</p>
-      </div>
-      <div class="action-label">عرض الاشتراكات ←</div>
+
+<!-- =========================
+     CART PANEL
+========================= -->
+
+<aside
+    class="cart-panel"
+    id="cartPanel">
+
+    <div class="cart-header">
+
+        <div class="cart-title">
+            <span>🛒</span>
+
+            <h2>
+                سلة المشتريات
+            </h2>
+        </div>
+
+        <button
+            class="cart-close"
+            onclick="closeCart()">
+            ×
+        </button>
+
     </div>
 
-    <div class="app-card" onclick="openPage('net-supersell-view', 'سوبر سيل Supercell', 'تجديد اشتراك سوبر سيل')">
-      <div>
-        <div class="icon-box">⚡</div>
-        <h3 class="app-title">سوبر سيل</h3>
-        <p class="app-desc">تجديد اشتراك الكابل والضوئي.</p>
-      </div>
-      <div class="action-label">عرض الاشتراكات ←</div>
+
+    <div
+        class="cart-body"
+        id="cartBody">
+
     </div>
 
-    <div class="app-card" onclick="openPage('net-jazeera-view', 'الجزيرة Telecom', 'تجديد اشتراك شبكة الجزيرة')">
-      <div>
-        <div class="icon-box">📡</div>
-        <h3 class="app-title">الجزيرة</h3>
-        <p class="app-desc">شحن باقات شبكة الجزيرة.</p>
-      </div>
-      <div class="action-label">عرض الاشتراكات ←</div>
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            <span>
+                الإجمالي
+            </span>
+
+            <strong id="cartTotal">
+                0 د.ع
+            </strong>
+
+        </div>
+
+
+        <div class="cart-actions">
+
+            <button
+                class="cart-action clear-cart"
+                onclick="clearCart()">
+                🗑️ تفريغ السلة
+            </button>
+
+            <button
+                class="cart-action checkout-cart"
+                onclick="checkoutCart()">
+                💬 إتمام الطلب
+            </button>
+
+        </div>
+
+        <div class="cart-note">
+            سيتم إرسال جميع المنتجات الموجودة في السلة إلى واتساب التاج الرقمي.
+        </div>
+
     </div>
 
-    <div class="app-card" onclick="openPage('net-hernz-view', 'هرنز Hernz', 'تجديد اشتراك هرنز')">
-      <div>
-        <div class="icon-box">🚀</div>
-        <h3 class="app-title">هرنز</h3>
-        <p class="app-desc">تجديد سريعة لشبكات هرنز.</p>
-      </div>
-      <div class="action-label">عرض الاشتراكات ←</div>
-    </div>
+</aside>
 
-    <div class="app-card" onclick="openPage('net-rahma-view', 'الرحمة Telecom', 'تجديد اشتراك شبكة الرحمة')">
-      <div>
-        <div class="icon-box">📶</div>
-        <h3 class="app-title">الرحمة</h3>
-        <p class="app-desc">شحن اشتراكات شبكة الرحمة.</p>
-      </div>
-      <div class="action-label">عرض الاشتراكات ←</div>
-    </div>
 
-    <div class="app-card" onclick="openPage('net-asiacell-view', 'كارتات اسياسيل', 'كروت شحن رصيد وإنترنت')">
-      <div>
-        <div class="icon-box">📱</div>
-        <h3 class="app-title">اسياسيل</h3>
-        <p class="app-desc">كروت رصيد وباقات إنترنت اسياسيل.</p>
-      </div>
-      <div class="action-label">عرض البطاقات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('net-atheer-view', 'كارتات أثير (زين)', 'كروت شحن رصيد وإنترنت')">
-      <div>
-        <div class="icon-box">📲</div>
-        <h3 class="app-title">أثير (زين)</h3>
-        <p class="app-desc">كروت رصيد وباقات إنترنت زين.</p>
-      </div>
-      <div class="action-label">عرض البطاقات ←</div>
-    </div>
-  </main>
+<!-- رسالة الإضافة -->
+<div
+    class="added-message"
+    id="addedMessage">
+    ✅ تمت إضافة المنتج إلى السلة
 </div>
 
-<!-- LEVEL 2: IPTV CATEGORIES LIST VIEW -->
-<div id="iptv-list-view" class="view">
-  <div class="grid-title">اختر التطبيق أو السيرفر</div>
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('max-details-view', 'سيرفر MAX TV', 'اختر مدة الاشتراك')">
-      <div>
-        <div class="icon-box">📺</div>
-        <h3 class="app-title">MAX TV</h3>
-        <p class="app-desc">سيرفر بث ممتاز للمباريات والسينما.</p>
-      </div>
-      <div class="action-label">عرض الأسعار ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('best-details-view', 'سيرفر BEST 4K', 'اختر مدة الاشتراك')">
-      <div>
-        <div class="icon-box">🍿</div>
-        <h3 class="app-title">BEST 4K</h3>
-        <p class="app-desc">أفضل جودة 4K وبدون تقطيع.</p>
-      </div>
-      <div class="action-label">عرض الأسعار ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('tiger-details-view', 'سيرفر TIGER', 'اختر مدة الاشتراك')">
-      <div>
-        <div class="icon-box">🐯</div>
-        <h3 class="app-title">TIGER IPTV</h3>
-        <p class="app-desc">مكتبة ضخمة من الأفلام والمسلسلات.</p>
-      </div>
-      <div class="action-label">عرض الأسعار ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('tod-details-view', 'اشتراك TOD', 'اختر نوع الاشتراك')">
-      <div>
-        <div class="icon-box">⚽</div>
-        <h3 class="app-title">TOD</h3>
-        <p class="app-desc">البث المباشر للبطولات الرياضية.</p>
-      </div>
-      <div class="action-label">عرض الأسعار ←</div>
-    </div>
-  </main>
-</div>
-
-<!-- LEVEL 2: GAMES LIST VIEW -->
-<div id="games-list-view" class="view">
-  <div class="grid-title">اختر اللعبة للشحن</div>
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('pubg-details-view', 'شدات ببجي PUBG', 'اختر فئة الشحن')">
-      <div>
-        <div class="icon-box">🔫</div>
-        <h3 class="app-title">ببجي Mobile</h3>
-        <p class="app-desc">شحن شدات UC فورية عبر ID.</p>
-      </div>
-      <div class="action-label">عرض الفئات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('yalla-details-view', 'ماس يلا لودو', 'اختر فئة الماس أو الماسية')">
-      <div>
-        <div class="icon-box">🎲</div>
-        <h3 class="app-title">يلا لودو</h3>
-        <p class="app-desc">شحن الماس وكولد وشحنات مخصصة.</p>
-      </div>
-      <div class="action-label">عرض الفئات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('freefire-details-view', 'جواهر Free Fire', 'اختر فئة الشحن')">
-      <div>
-        <div class="icon-box">💎</div>
-        <h3 class="app-title">فري فاير</h3>
-        <p class="app-desc">شحن جواهر مباشر عن طريق ID.</p>
-      </div>
-      <div class="action-label">عرض الفئات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('roblox-details-view', 'روبلوكس Roblox', 'اختر فئة Robux')">
-      <div>
-        <div class="icon-box">🧱</div>
-        <h3 class="app-title">روبلوكس</h3>
-        <p class="app-desc">بطاقات وشحن رصيد Robux.</p>
-      </div>
-      <div class="action-label">عرض الفئات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('pes-details-view', 'بيس eFootball', 'اختر فئة الكوينز')">
-      <div>
-        <div class="icon-box">⚽</div>
-        <h3 class="app-title">بيس eFootball</h3>
-        <p class="app-desc">شحن كوينز Coins بيس المباشر.</p>
-      </div>
-      <div class="action-label">عرض الفئات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('mc-details-view', 'ماين كرافت Minecraft', 'حسابات وأكواد ماين كرافت')">
-      <div>
-        <div class="icon-box">⛏️</div>
-        <h3 class="app-title">ماين كرافت</h3>
-        <p class="app-desc">أكواد وشحن Minecoins وسيرفرات.</p>
-      </div>
-      <div class="action-label">عرض الفئات ←</div>
-    </div>
-  </main>
-</div>
-
-<!-- LEVEL 2: FINANCIAL TRANSFERS LIST VIEW -->
-<div id="transfers-list-view" class="view">
-  <div class="grid-title">وسائل التحويل المالي</div>
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('zaincash-details-view', 'زين كاش Zain Cash', 'تحويل وإيداع أموال')">
-      <div>
-        <div class="icon-box">📱</div>
-        <h3 class="app-title">زين كاش</h3>
-        <p class="app-desc">تحويل، إيداع وسحب مباشر.</p>
-      </div>
-      <div class="action-label">طلب تحويل ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('rafidain-details-view', 'ماستر الرافدين', 'تحويل وإيداع ماستر كارد')">
-      <div>
-        <div class="icon-box">💳</div>
-        <h3 class="app-title">ماستر الرافدين</h3>
-        <p class="app-desc">شحن وتعبئة بطاقات الرافدين.</p>
-      </div>
-      <div class="action-label">طلب تحويل ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('asiapay-details-view', 'آسيا بي AsiaPay', 'تحويل وإيداع أموال')">
-      <div>
-        <div class="icon-box">📲</div>
-        <h3 class="app-title">آسيا بي</h3>
-        <p class="app-desc">خدمات محفظة آسيا بي المالية.</p>
-      </div>
-      <div class="action-label">طلب تحويل ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('fastpay-details-view', 'فاست بي FastPay', 'تحويل وإيداع أموال')">
-      <div>
-        <div class="icon-box">⚡</div>
-        <h3 class="app-title">فاست بي</h3>
-        <p class="app-desc">تحويلات سريعة فورية عبر المحفظة.</p>
-      </div>
-      <div class="action-label">طلب تحويل ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('asiatransfer-details-view', 'تحويل رصيد آسيا', 'تحويل رصيد اسياسيل مباشر')">
-      <div>
-        <div class="icon-box">🔄</div>
-        <h3 class="app-title">تحويل رصيد آسيا</h3>
-        <p class="app-desc">تحويل رصيد اسياسيل مباشر بين الخطوط.</p>
-      </div>
-      <div class="action-label">طلب تحويل ←</div>
-    </div>
-  </main>
-</div>
-
-<!-- LEVEL 2: SOCIAL MEDIA LIST VIEW -->
-<div id="social-list-view" class="view">
-  <div class="grid-title">منصات السوشيال ميديا</div>
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('fb-details-view', 'خدمات فيس بوك', 'متابعين، لايكات، مشاهدات')">
-      <div>
-        <div class="icon-box">📘</div>
-        <h3 class="app-title">فيس بوك</h3>
-        <p class="app-desc">دعم البيجات والحسابات الشخصية.</p>
-      </div>
-      <div class="action-label">عرض الخدمة ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('insta-details-view', 'خدمات انستكرام', 'متابعين، لايكات، ريلز')">
-      <div>
-        <div class="icon-box">📸</div>
-        <h3 class="app-title">انستكرام</h3>
-        <p class="app-desc">زيادة متابعين وتفاعل ريلز.</p>
-      </div>
-      <div class="action-label">عرض الخدمة ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('tele-details-view', 'خدمات تليكرام', 'أعضاء قنوات ومشاهدات')">
-      <div>
-        <div class="icon-box">✈️</div>
-        <h3 class="app-title">تليكرام</h3>
-        <p class="app-desc">تمويل أعضاء القنوات والجروبات.</p>
-      </div>
-      <div class="action-label">عرض الخدمة ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('tiktok-details-view', 'خدمات تيك توك', 'متابعين، لايكات، اكسبلور')">
-      <div>
-        <div class="icon-box">🎵</div>
-        <h3 class="app-title">تيك توك</h3>
-        <p class="app-desc">رفع التفاعل ودعم الحسابات.</p>
-      </div>
-      <div class="action-label">عرض الخدمة ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('wa-details-view', 'خدمات واتساب', 'بوتات وخدمات أرقام')">
-      <div>
-        <div class="icon-box">💬</div>
-        <h3 class="app-title">واتساب</h3>
-        <p class="app-desc">خدمات الأعمال والتواصل المباشر.</p>
-      </div>
-      <div class="action-label">عرض الخدمة ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('snap-details-view', 'خدمات سناب جات', 'متابعين ومشاهدات ستيوريات')">
-      <div>
-        <div class="icon-box">👻</div>
-        <h3 class="app-title">سناب جات</h3>
-        <p class="app-desc">زيادة مشاهدات المين والمستكشف.</p>
-      </div>
-      <div class="action-label">عرض الخدمة ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('yt-details-view', 'خدمات يوتيوب', 'مشتركين، ساعات، لايكات')">
-      <div>
-        <div class="icon-box">▶️</div>
-        <h3 class="app-title">يوتيوب</h3>
-        <p class="app-desc">تحقيق شروط الربح وتكبير القنوات.</p>
-      </div>
-      <div class="action-label">عرض الخدمة ←</div>
-    </div>
-  </main>
-</div>
-
-<!-- LEVEL 2: CARDS LIST VIEW -->
-<div id="cards-list-view" class="view">
-  <div class="grid-title">اختر نوع البطاقة</div>
-  <main class="products-grid">
-    <div class="app-card" onclick="openPage('apple-details-view', 'بطاقات Apple', 'اختر الرصيد المطلوب')">
-      <div>
-        <div class="icon-box">🍏</div>
-        <h3 class="app-title">Apple Gift Cards</h3>
-        <p class="app-desc">بطاقات المتجر الأمريكي.</p>
-      </div>
-      <div class="action-label">عرض الفئات ←</div>
-    </div>
-
-    <div class="app-card" onclick="openPage('google-details-view', 'بطاقات Google Play', 'اختر الرصيد المطلوب')">
-      <div>
-        <div class="icon-box">🎮</div>
-        <h3 class="app-title">Google Play</h3>
-        <p class="app-desc">أكواد شحن المتجر المباشرة.</p>
-      </div>
-      <div class="action-label">عرض الفئات ←</div>
-    </div>
-  </main>
-</div>
-
-<!-- LEVEL 3: TRANSFERS DETAILS VIEWS -->
-
-<div id="zaincash-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تحويل / إيداع زين كاش</h3>
-        <p>إيداع وسحب وتعبئة محافظ زين كاش</p>
-        <div class="plan-price">حسب المبلغ</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل/إيداع%20عبر%20زين%20كاش">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="rafidain-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تحويل ماستر الرافدين</h3>
-        <p>إيداع وشحن بطاقات ماستر كارد الرافدين</p>
-        <div class="plan-price">حسب المبلغ</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل/شحن%20ماستر%20الرافدين">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="asiapay-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تحويل محفظة آسيا بي (AsiaPay)</h3>
-        <p>إرسال واستلام عبر محفظة آسيا بي</p>
-        <div class="plan-price">حسب المبلغ</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل/إيداع%20عبر%20آسيا%20بي">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="fastpay-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تحويل فاست بي (FastPay)</h3>
-        <p>إيداع وشحن فوري لمحفظة فاست بي</p>
-        <div class="plan-price">حسب المبلغ</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل/إيداع%20عبر%20فاست%20بي">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="asiatransfer-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تحويل رصيد اسياسيل</h3>
-        <p>تحويل رصيد أثير/آسيا مباشر إلى رقمك</p>
-        <div class="plan-price">حسب المبلغ</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تحويل%20رصيد%20اسياسيل">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<!-- LEVEL 3: GAMES DETAILS VIEWS -->
-
-<div id="pubg-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>60 UC (شدة)</h3>
-        <p>شحن أوتوماتيكي سريع عن طريق ID</p>
-        <div class="plan-price">2,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20شدات%20ببجي%2060UC">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>325 UC (شدة)</h3>
-        <p>شحن سريع لحسابك</p>
-        <div class="plan-price">7,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20شدات%20ببجي%20325UC">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>660 UC (شدة)</h3>
-        <p>باقة الرويال باس المعتادة</p>
-        <div class="plan-price">14,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20شدات%20ببجي%20660UC">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="yalla-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>شحن الماس يلا لودو</h3>
-        <p>شحن فوري ومباشر عن طريق ID</p>
-        <div class="plan-price">حسب الفئة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20ماس%20يلا%20لودو">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="freefire-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>شحن جواهر فري فاير</h3>
-        <p>100 حتى 2100+ جوهر عبر الـ ID</p>
-        <div class="plan-price">حسب الفئة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20جواهر%20فري%20فاير">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="roblox-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>شحن روبلكس (Robux)</h3>
-        <p>بطاقات هدايا وأكواد شحن روبلوكس</p>
-        <div class="plan-price">حسب الفئة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20روبلوكس%20Robux">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="pes-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>كوينز بيس (eFootball Coins)</h3>
-        <p>شحن كوينز رسمي ومباشر للحساب</p>
-        <div class="plan-price">حسب الفئة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شحن%20كوينز%20بيس%20eFootball">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="mc-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>ماين كرافت Minecraft</h3>
-        <p>أكواد رسمية + Minecoins لشراء المودات</p>
-        <div class="plan-price">حسب الفئة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20منتجات%20ماين%20كرافت">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<!-- LEVEL 3: INTERNET DETAILS VIEWS -->
-
-<div id="net-watani-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تجديد اشتراك الوطني</h3>
-        <p>يرجى إرسال اسم المستخدم أو رقم الاشتراك</p>
-        <div class="plan-price">حسب الباقة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20الوطني">💬 تجديد</a>
-    </div>
-  </div>
-</div>
-
-<div id="net-supersell-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تجديد اشتراك سوبر سيل</h3>
-        <p>يرجى إرسال اسم المستخدم أو كارت التجديد</p>
-        <div class="plan-price">حسب الباقة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20سوبر%20سيل">💬 تجديد</a>
-    </div>
-  </div>
-</div>
-
-<div id="net-jazeera-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تجديد اشتراك الجزيرة</h3>
-        <p>يرجى إرسال بيانات الاشتراك لتجديده فوراً</p>
-        <div class="plan-price">حسب الباقة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20الجزيرة">💬 تجديد</a>
-    </div>
-  </div>
-</div>
-
-<div id="net-hernz-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تجديد اشتراك هرنز</h3>
-        <p>يرجى إرسال اسم المستخدم الخاص بالشبكة</p>
-        <div class="plan-price">حسب الباقة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20هرنز">💬 تجديد</a>
-    </div>
-  </div>
-</div>
-
-<div id="net-rahma-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تجديد اشتراك الرحمة</h3>
-        <p>إرسال اسم اليوزر للتجديد المباشر</p>
-        <div class="plan-price">حسب الباقة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20تجديد%20اشتراك%20الرحمة">💬 تجديد</a>
-    </div>
-  </div>
-</div>
-
-<div id="net-asiacell-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>كارتات وتعبئة رصيد اسياسيل</h3>
-        <p>كروت شحن رصيد وباقات إنترنت مختلفة</p>
-        <div class="plan-price">حسب الفئة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شراء%20كارت%20اسياسيل">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="net-atheer-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>كارتات وتعبئة رصيد أثير (زين)</h3>
-        <p>كروت شحن رصيد وباقات إنترنت مختلفة</p>
-        <div class="plan-price">حسب الفئة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شراء%20كارت%20أثير">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<!-- LEVEL 3: IPTV DETAILS -->
-
-<div id="max-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>MAX - شهر واحد</h3>
-        <p>اشتراك سيرفر MAX لمدة 1 شهر</p>
-        <div class="plan-price">5,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20(شهر%20بـ%205000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>MAX - 3 أشهر</h3>
-        <p>اشتراك سيرفر MAX لمدة 3 أشهر</p>
-        <div class="plan-price">10,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20(3%20أشهر%20بـ%2010000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>MAX - 6 أشهر</h3>
-        <p>اشتراك سيرفر MAX لمدة 6 أشهر</p>
-        <div class="plan-price">15,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20(6%20أشهر%20بـ%2015000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>MAX - سنة كاملة</h3>
-        <p>اشتراك سيرفر MAX لمدة سنة</p>
-        <div class="plan-price">25,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20MAX%20(سنة%20بـ%2025000)">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="best-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>BEST 4K - شهر واحد</h3>
-        <p>اشتراك سيرفر BEST لمدة 1 شهر</p>
-        <div class="plan-price">4,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(شهر%20بـ%204000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>BEST 4K - 3 أشهر</h3>
-        <p>اشتراك سيرفر BEST لمدة 3 أشهر</p>
-        <div class="plan-price">9,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(3%20أشهر%20بـ%209000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>BEST 4K - 6 أشهر</h3>
-        <p>اشتراك سيرفر BEST لمدة 6 أشهر</p>
-        <div class="plan-price">13,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(6%20أشهر%20بـ%2013000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>BEST 4K - سنة كاملة</h3>
-        <p>اشتراك سيرفر BEST لمدة سنة</p>
-        <div class="plan-price">20,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20BEST%204K%20(سنة%20بـ%2020000)">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="tiger-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>TIGER - شهر واحد</h3>
-        <p>اشتراك سيرفر TIGER لمدة 1 شهر</p>
-        <div class="plan-price">3,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TIGER%20(شهر%20بـ%203000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>TIGER - 3 أشهر</h3>
-        <p>اشتراك سيرفر TIGER لمدة 3 أشهر</p>
-        <div class="plan-price">7,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TIGER%20(3%20أشهر%20بـ%207000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>TIGER - 6 أشهر</h3>
-        <p>اشتراك سيرفر TIGER لمدة 6 أشهر</p>
-        <div class="plan-price">13,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TIGER%20(6%20أشهر%20بـ%2013000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>TIGER - سنة كاملة</h3>
-        <p>اشتراك سيرفر TIGER لمدة سنة</p>
-        <div class="plan-price">18,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TIGER%20(سنة%20بـ%2018000)">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="tod-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>TOD - موبايل فقط</h3>
-        <p>باقة الأجهزة المحمولة</p>
-        <div class="plan-price">15,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TOD%20(موبايل%20فقط%20بـ%2015000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>TOD - شاشة فقط</h3>
-        <p>باقة الشاشات والتلفزيون الذكي</p>
-        <div class="plan-price">20,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TOD%20(شاشة%20فقط%20بـ%2020000)">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>TOD - شاشة وموبايل</h3>
-        <p>الباقة الشاملة للشاشة والموبايل معاً</p>
-        <div class="plan-price">25,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20TOD%20(شاشة%20وموبايل%20بـ%2025000)">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<!-- LEVEL 3: SOCIAL DETAILS VIEWS -->
-
-<div id="fb-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>تمويل صفحة / حساب فيس بوك</h3>
-        <p>متابعين، اعجابات بيج، تفاعل منشورات</p>
-        <div class="plan-price">حسب الطلب</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20فيس%20بوك">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="insta-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>خدمات انستكرام</h3>
-        <p>متابعين حقيقيين، مشاهدات ريلز، لايكات</p>
-        <div class="plan-price">حسب الطلب</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20انستكرام">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="tele-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>خدمات تليكرام</h3>
-        <p>أعضاء قنوات وجروبات + مشاهدات منشورات</p>
-        <div class="plan-price">حسب الطلب</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20تليكرام">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="tiktok-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>خدمات تيك توك</h3>
-        <p>متابعين، لايكات، أكسبلور ودعم البث المباشر</p>
-        <div class="plan-price">حسب الطلب</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20تيك%20توك">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="wa-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>خدمات واتساب</h3>
-        <p>بوتات رد آلي وتفعيل أرقام للواتساب</p>
-        <div class="plan-price">حسب الطلب</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20واتساب">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="snap-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>خدمات سناب جات</h3>
-        <p>متابعين ومشاهدات ستوري وباقة المستكشف</p>
-        <div class="plan-price">حسب الطلب</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20سناب%20جات">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="yt-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>خدمات يوتيوب</h3>
-        <p>مشتركين، ساعات مشاهدة وتفعيل تحقيق الربح</p>
-        <div class="plan-price">حسب الطلب</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20استفسار%20عن%20خدمات%20يوتيوب">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<!-- LEVEL 3: OTHER CARDS DETAILS -->
-
-<div id="apple-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>بطاقة Apple $5</h3>
-        <p>كود رقمي للمتجر الأمريكي</p>
-        <div class="plan-price">8,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20بطاقة%20أبل%205%24">💬 طلب</a>
-    </div>
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>بطاقة Apple $10</h3>
-        <p>كود رقمي للمتجر الأمريكي</p>
-        <div class="plan-price">15,000 د.ع</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20طلب:%20بطاقة%20أبل%2010%24">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<div id="google-details-view" class="view">
-  <div class="plans-list">
-    <div class="plan-card">
-      <div class="plan-info">
-        <h3>بطاقات Google Play</h3>
-        <p>أكواد شحن مباشر بمختلف الفئات</p>
-        <div class="plan-price">حسب الفئة</div>
-      </div>
-      <a class="wa-buy-btn" target="_blank" href="https://wa.me/9647760361911?text=السلام%20عليكم،%20أريد%20شراء%20بطاقة%20قوقل%20بلاي">💬 طلب</a>
-    </div>
-  </div>
-</div>
-
-<!-- Bottom Navigation Bar -->
-<nav class="bottom-bar">
-  <button class="tab-btn active" onclick="goHome()">
-    <span style="font-size:18px;">🏠</span>
-    <span>الرئيسية</span>
-  </button>
-  <a href="https://wa.me/9647760361911" target="_blank" class="tab-btn">
-    <span style="font-size:18px;">🟢</span>
-    <span>طلب مباشر</span>
-  </a>
-</nav>
 
 <script>
-let historyStack = ['home-view'];
-let headerTitles = { 'home-view': { title: 'فاطمة ستور', sub: 'اختر القسم للتنقل' } };
 
-function openPage(pageId, title, sub) {
-  document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
-  
-  historyStack.push(pageId);
-  headerTitles[pageId] = { title: title, sub: sub };
+/* =========================================================
+   🛒 نظام السلة
+========================================================= */
 
-  document.getElementById('header-title').textContent = title;
-  document.getElementById('header-subtitle').textContent = sub;
-  document.getElementById('backBtn').style.display = 'block';
-  window.scrollTo(0, 0);
-}
+const CART_STORAGE_KEY = "altaj_digital_cart";
 
-function goBack() {
-  if (historyStack.length > 1) {
-    historyStack.pop();
-    let previousPageId = historyStack[historyStack.length - 1];
+const WHATSAPP_NUMBER = "9647756832160";
 
-    document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-    document.getElementById(previousPageId).classList.add('active');
+let cart = [];
 
-    let meta = headerTitles[previousPageId];
-    document.getElementById('header-title').textContent = meta.title;
-    document.getElementById('header-subtitle').textContent = meta.sub;
+try{
 
-    if (historyStack.length === 1) {
-      document.getElementById('backBtn').style.display = 'none';
+    const savedCart =
+        localStorage.getItem(CART_STORAGE_KEY);
+
+    cart = savedCart
+        ? JSON.parse(savedCart)
+        : [];
+
+    if(!Array.isArray(cart)){
+        cart = [];
     }
-    window.scrollTo(0, 0);
-  }
+
+}catch(error){
+
+    cart = [];
+
 }
 
-function goHome() {
-  historyStack = ['home-view'];
-  document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-  document.getElementById('home-view').classList.add('active');
 
-  document.getElementById('header-title').textContent = 'فاطمة ستور';
-  document.getElementById('header-subtitle').textContent = 'اختر القسم للتنقل';
-  document.getElementById('backBtn').style.display = 'none';
-  window.scrollTo(0, 0);
+/* =========================================================
+   حفظ السلة
+========================================================= */
+
+function saveCart(){
+
+    localStorage.setItem(
+        CART_STORAGE_KEY,
+        JSON.stringify(cart)
+    );
+
+    renderCart();
+
 }
+
+
+/* =========================================================
+   تحويل السعر
+========================================================= */
+
+function parsePrice(price){
+
+    if(typeof price === "number"){
+        return price;
+    }
+
+    if(!price){
+        return 0;
+    }
+
+    let clean =
+        String(price)
+        .replace(/[^\d]/g,"");
+
+    return Number(clean) || 0;
+
+}
+
+
+/* =========================================================
+   إضافة منتج
+========================================================= */
+
+function addToCart(name, price){
+
+    price = parsePrice(price);
+
+    const existing =
+        cart.find(item =>
+            item.name === name &&
+            item.price === price
+        );
+
+    if(existing){
+
+        existing.qty++;
+
+    }else{
+
+        cart.push({
+
+            id:
+                Date.now().toString() +
+                Math.random().toString(36).slice(2),
+
+            name:name,
+
+            price:price,
+
+            qty:1
+
+        });
+
+    }
+
+    saveCart();
+
+    showAddedMessage();
+
+}
+
+
+/* =========================================================
+   حذف منتج بالكامل
+========================================================= */
+
+function removeFromCart(id){
+
+    cart =
+        cart.filter(item =>
+            item.id !== id
+        );
+
+    saveCart();
+
+}
+
+
+/* =========================================================
+   تغيير الكمية
+========================================================= */
+
+function changeQuantity(id, amount){
+
+    const item =
+        cart.find(x =>
+            x.id === id
+        );
+
+    if(!item){
+        return;
+    }
+
+    item.qty += amount;
+
+    if(item.qty <= 0){
+
+        cart =
+            cart.filter(x =>
+                x.id !== id
+            );
+
+    }
+
+    saveCart();
+
+}
+
+
+/* =========================================================
+   تفريغ السلة
+========================================================= */
+
+function clearCart(){
+
+    if(cart.length === 0){
+        return;
+    }
+
+    const confirmClear =
+        confirm(
+            "هل تريد تفريغ سلة المشتريات بالكامل؟"
+        );
+
+    if(!confirmClear){
+        return;
+    }
+
+    cart = [];
+
+    saveCart();
+
+}
+
+
+/* =========================================================
+   حساب الإجمالي
+========================================================= */
+
+function getCartTotal(){
+
+    return cart.reduce(
+        (total,item) =>
+            total +
+            (item.price * item.qty),
+        0
+    );
+
+}
+
+
+/* =========================================================
+   عدد المنتجات
+========================================================= */
+
+function getCartCount(){
+
+    return cart.reduce(
+        (total,item) =>
+            total + item.qty,
+        0
+    );
+
+}
+
+
+/* =========================================================
+   تنسيق السعر
+========================================================= */
+
+function formatPrice(price){
+
+    return Number(price)
+        .toLocaleString("en-US") +
+        " د.ع";
+
+}
+
+
+/* =========================================================
+   عرض السلة
+========================================================= */
+
+function renderCart(){
+
+    const body =
+        document.getElementById("cartBody");
+
+    const count =
+        document.getElementById("cartCount");
+
+    const total =
+        document.getElementById("cartTotal");
+
+
+    if(!body){
+        return;
+    }
+
+
+    const countNumber =
+        getCartCount();
+
+    count.textContent =
+        countNumber;
+
+
+    total.textContent =
+        formatPrice(
+            getCartTotal()
+        );
+
+
+    if(cart.length === 0){
+
+        body.innerHTML = `
+
+            <div class="cart-empty">
+
+                <div class="cart-empty-icon">
+                    🛒
+                </div>
+
+                <strong>
+                    السلة فارغة
+                </strong>
+
+                <span>
+                    أضف المنتجات التي تريدها إلى السلة
+                </span>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    body.innerHTML =
+        cart.map(item => `
+
+            <div class="cart-item">
+
+                <div class="cart-item-top">
+
+                    <div class="cart-item-info">
+
+                        <div class="cart-item-name">
+                            ${escapeHtml(item.name)}
+                        </div>
+
+                        <span class="cart-item-price">
+                            ${formatPrice(item.price)}
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="cart-delete"
+                        onclick="removeFromCart('${item.id}')"
+                        title="حذف المنتج">
+
+                        🗑️
+
+                    </button>
+
+                </div>
+
+
+                <div class="cart-item-bottom">
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="changeQuantity('${item.id}',-1)">
+                            −
+                        </button>
+
+                        <span>
+                            ${item.qty}
+                        </span>
+
+                        <button
+                            onclick="changeQuantity('${item.id}',1)">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <div class="item-total">
+
+                        ${formatPrice(
+                            item.price * item.qty
+                        )}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+/* =========================================================
+   حماية النص
+========================================================= */
+
+function escapeHtml(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   فتح السلة
+========================================================= */
+
+function openCart(){
+
+    document
+        .getElementById("cartPanel")
+        .classList.add("show");
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("show");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =========================================================
+   إغلاق السلة
+========================================================= */
+
+function closeCart(){
+
+    document
+        .getElementById("cartPanel")
+        .classList.remove("show");
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("show");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =========================================================
+   رسالة الإضافة
+========================================================= */
+
+let addedTimer;
+
+function showAddedMessage(){
+
+    const message =
+        document.getElementById("addedMessage");
+
+    message.classList.add("show");
+
+    clearTimeout(addedTimer);
+
+    addedTimer =
+        setTimeout(
+            function(){
+
+                message.classList.remove("show");
+
+            },
+            1800
+        );
+
+}
+
+
+/* =========================================================
+   إتمام الطلب
+========================================================= */
+
+function checkoutCart(){
+
+    if(cart.length === 0){
+
+        alert(
+            "🛒 السلة فارغة، أضف منتجاً أولاً."
+        );
+
+        return;
+
+    }
+
+
+    let message =
+        "السلام عليكم 👋\n\n" +
+        "أريد الطلب من التاج الرقمي:\n\n";
+
+
+    cart.forEach(
+        function(item,index){
+
+            message +=
+                "📦 " +
+                (index + 1) +
+                ". " +
+                item.name +
+                "\n";
+
+            message +=
+                "🔢 الكمية: " +
+                item.qty +
+                "\n";
+
+            message +=
+                "💰 السعر: " +
+                formatPrice(
+                    item.price * item.qty
+                ) +
+                "\n\n";
+
+        }
+    );
+
+
+    message +=
+        "━━━━━━━━━━━━\n";
+
+    message +=
+        "💵 الإجمالي: " +
+        formatPrice(
+            getCartTotal()
+        ) +
+        "\n\n";
+
+    message +=
+        "يرجى إرسال التفاصيل وطريقة الدفع. شكراً لكم 🌹";
+
+
+    const url =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =========================================================
+   دعم زر order القديم
+   بدلاً من إرسال المنتج مباشرة إلى واتساب،
+   تتم إضافته إلى السلة.
+========================================================= */
+
+function order(product){
+
+    /*
+       نحاول استخراج السعر من اسم المنتج.
+       إذا لم يوجد سعر، يوضع 0 ويظهر
+       "السعر عند الطلب" في السلة.
+    */
+
+    let price = 0;
+
+    const match =
+        String(product).match(
+            /(\d[\d,]*)\s*د\.ع/
+        );
+
+    if(match){
+
+        price =
+            parseInt(
+                match[1].replace(/,/g,""),
+                10
+            ) || 0;
+
+    }
+
+
+    addToCart(
+        product,
+        price
+    );
+
+}
+
+
+/* =========================================================
+   عند تحميل الصفحة
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        renderCart();
+
+    }
+);
+
+
+/* =========================================================
+   زر ESC لإغلاق السلة
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Escape"){
+            closeCart();
+        }
+
+    }
+);
+
 </script>
-
-</body>
-</html>
