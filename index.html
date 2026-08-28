@@ -31,7 +31,7 @@ a{text-decoration:none;color:inherit;cursor:pointer}.header{position:sticky;top:
 <body>
 <header class="header"><div class="brand"><div><h1>التاج الرقمي</h1><p>كل خدماتك الإلكترونية بمكان واحد</p></div></div><a class="hero-btn secondary" href="#offers">🔥 العروض</a></header>
 
-<section class="hero"><div class="video-bg"><iframe id="storeVideo" src="https://www.youtube.com/embed/LrhHPRJCJL4?autoplay=1&mute=1&loop=1&playlist=LrhHPRJCJL4&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture"></iframe><div class="video-overlay"></div><button id="soundBtn" class="sound-btn" onclick="toggleSound()">🔇 تشغيل الصوت</button></div>
+<section class="hero"><div class="video-bg"><iframe id="storeVideo" src="https://www.youtube.com/embed/2v9QfFuISJg?autoplay=1&mute=0&loop=1&playlist=2v9QfFuISJg&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture"></iframe><div class="video-overlay"></div></div>
 <div class="hero-content"><h2>أهلاً بكم في <span>التاج الرقمي</span></h2><p class="hero-sub">متجر رقمي متكامل للاشتراكات والخدمات الإلكترونية، شحن الألعاب، البطاقات، الإنترنت، السوشيال ميديا، الذكاء الاصطناعي، التصميم والمونتاج والمزيد.</p><div class="trial-big"><strong>🎁 تجربة الخدمة بـ 1000 د.ع</strong><span>جرّب الخدمة وتأكد من الجودة قبل الاشتراك</span></div><div class="hero-buttons"><a class="hero-btn whatsapp" target="_blank" href="https://wa.me/9647756832160?text=السلام%20عليكم%20أريد%20تجربة%20الخدمة%20بـ1000">💬 أطلب التجربة</a><a class="hero-btn secondary" href="#offers">🔥 مشاهدة العروض</a></div></div></section>
 
 <div class="search-wrap"><input id="searchInput" class="search-box" type="search" placeholder="🔎 ابحث عن منتج أو خدمة داخل المتجر..."></div>
@@ -136,10 +136,4 @@ a{text-decoration:none;color:inherit;cursor:pointer}.header{position:sticky;top:
 const PHONE="9647756832160";
 function order(product){const message="السلام عليكم 👋\n\n"+"أريد الطلب/الاستفسار من التاج الرقمي:\n"+"📦 "+product+"\n\n"+"يرجى إرسال السعر والتفاصيل.";window.open("https://wa.me/"+PHONE+"?text="+encodeURIComponent(message),"_blank")}
 function copyCode(code){if(navigator.clipboard){navigator.clipboard.writeText(code).then(function(){alert("✅ تم نسخ كود Downloader: "+code)})}else{const input=document.createElement("input");input.value=code;document.body.appendChild(input);input.select();document.execCommand("copy");input.remove();alert("✅ تم نسخ الكود: "+code)}}
-let soundOn=false;
-function toggleSound(){const iframe=document.getElementById('storeVideo');const button=document.getElementById('soundBtn');soundOn=!soundOn;iframe.src="https://www.youtube.com/embed/LrhHPRJCJL4"+"?autoplay=1"+"&mute="+(soundOn?"0":"1")+"&loop=1"+"&playlist=LrhHPRJCJL4"+"&controls=0"+"&playsinline=1"+"&rel=0"+"&modestbranding=1";button.innerHTML=soundOn?'🔊 الصوت يعمل':'🔇 تشغيل الصوت'}
-document.getElementById('searchInput').addEventListener('input',function(){const v=this.value.trim().toLowerCase();document.querySelectorAll('.offer-card,.iptv-card,.player-card,.ai-card,.ent-card,.design-card,.big-card,.item').forEach(function(x){x.style.display=(!v||x.innerText.toLowerCase().includes(v))?'':'none'})});
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){const id=a.getAttribute('href');if(id&&id!=='#'){const el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'})}}})});
-</script>
-</body>
-</html>
+>
